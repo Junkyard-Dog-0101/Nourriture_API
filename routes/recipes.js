@@ -1,16 +1,7 @@
 var express = require('express');
-var router = express.Router();
 var Recipe = require('../app/models/recipe');
+var router = express.Router();
 
-/*router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
-    next();
-});*/
-
-/*router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
-});*/
 
 router.route('/')
     .post(function(req, res) {
