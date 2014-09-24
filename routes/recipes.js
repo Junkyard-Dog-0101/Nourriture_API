@@ -7,6 +7,7 @@ router.route('/')
     .post(function(req, res) {
 	var recipe = new Recipe();
 	recipe.name = req.body.name;
+	recipe.ingredients.push(req.body.ingredient_id);
 	recipe.save(function(err) {
 	    if (err)
 		res.send(err);
@@ -34,6 +35,7 @@ router.route('/:recipe_id')
 	    if (err)
 		res.send(err);
 	    recipe.name = req.body.name;
+	    recipe.ingredients.push(req.body.ingredient_id);
 	    recipe.save(function(err) {
 		if (err)
 		    res.send(err);
