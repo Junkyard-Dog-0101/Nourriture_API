@@ -1,9 +1,18 @@
 {
     "name": "node-api",
     "main": "server.js",
+    "description": "nourriture server project",
+    "version": "0.0.1",
     "dependencies": {
-	"express": "~4.0.0",
-	"mongoose": "~3.6.13",
-	"body-parser": "~1.0.1"
-	}
+	"express": "4.9.5",
+	"mongoose": "3.8.17",
+	"body-parser": "1.9.0"
+    },
+    "devDependencies": {
+	"express": "4.9.5",
+	"mongoose": "3.8.17",
+	"body-parser": "1.9.0",
+	"mocha": "1.21.4",
+	"supertest": "0.14.0"
+    }
 }

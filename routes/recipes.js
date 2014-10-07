@@ -1,11 +1,13 @@
 var express = require('express');
 var Recipe = require('../app/models/recipe');
 var router = express.Router();
-
+var util = require("util");
 
 router.route('/')
     .post(function(req, res) {
 	var recipe = new Recipe();
+//	console.log("Session:" + util.inspect(req.body))
+	//JSON.stringify(req.body);
 	recipe.name = req.body.name;
 	recipe.ingredients.push(req.body.ingredient_id);
 	recipe.save(function(err) {
