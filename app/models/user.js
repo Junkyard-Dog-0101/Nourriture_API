@@ -10,14 +10,18 @@ var UserSchema = new Schema({
     lastName: String,
     gender: String,
     email: String,
+    status: Boolean,
     phoneNumber: String,
+    introduction: String,
     registrationDate: Date,
-    friends: [userId: {
-	type: Schema.Types.ObjecId,
-        ref: 'User'
-    }, status: {
-	type: String, enum: ['normal', 'block', 'blocked', 'request', 'requested']
-    }],
+    Role: {
+        type: String,
+	enum: ['normal', 'foodSupplier', 'gastronomist']
+    },
+    picture: {
+        type: Schema.Types.ObjecId,
+        ref: 'Picture'
+    },
     healthProblems: [{
 	type: Schema.Types.ObjecId,
 	ref: 'HealthProblem'
@@ -26,7 +30,13 @@ var UserSchema = new Schema({
 	type: Schema.Types.ObjecId,
 	ref: 'EthicReligion'
     }],
-    Introduction: String
+    friends: [userId: {
+	type: Schema.Types.ObjecId,
+	ref: 'User'
+    }, status: {
+	type: String,
+	enum: ['normal', 'block', 'blocked', 'request', 'requested']
+    }]
 });
 
 module.exports = mongoose.model('User', UserSchema);
