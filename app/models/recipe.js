@@ -7,7 +7,10 @@ var RecipeSchema = new Schema({
     name: String,
     description: String,
     content: String,
-    date: Date,
+    date: {
+        type: Date,
+        default: Date.now
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'

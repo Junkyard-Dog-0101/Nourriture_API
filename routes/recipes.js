@@ -4,55 +4,55 @@ var router = express.Router();
 var util = require("util");
 
 router.route('/')
-    .post(function(req, res) {
-	var recipe = new Recipe();
-//	console.log("Session:" + util.inspect(req.body))
-	//JSON.stringify(req.body);
-	recipe.name = req.body.name;
-	recipe.ingredients.push(req.body.ingredient_id);
-	recipe.save(function(err) {
-	    if (err)
-		res.send(err);
-	    res.json({ message: 'Recipe created!' });
-	});
+    .post(function (req, res) {
+        var recipe = new Recipe();
+        recipe.name = req.body.name;
+        recipe.description = req.body.description;
+        recipe.content = req.body.content;
+        recipe.ingredients.push(req.body.ingredient_id);
+        recipe.save(function (err) {
+            if (err)
+                res.send(err);
+            res.json({message: 'Recipe created!'});
+        });
     })
-    .get(function(req, res) {
-	Recipe.find(function(err, recipes) {
-	    if (err)
-		res.send(err);
-	    res.json(recipes);
-	});
+    .get(function (req, res) {
+        Recipe.find(function (err, recipes) {
+            if (err)
+                res.send(err);
+            res.json(recipes);
+        });
     });
 
 router.route('/:recipe_id')
-    .get(function(req, res) {
-	Recipe.findById(req.params.recipe_id, function(err, recipe) {
-	    if (err)
-		res.send(err);
-	    res.json(recipe);
-	});
+    .get(function (req, res) {
+        Recipe.findById(req.params.recipe_id, function (err, recipe) {
+            if (err)
+                res.send(err);
+            res.json(recipe);
+        });
     })
-    .put(function(req, res) {
-	Recipe.findById(req.params.recipe_id, function(err, recipe) {
-	    if (err)
-		res.send(err);
-	    recipe.name = req.body.name;
-	    recipe.ingredients.push(req.body.ingredient_id);
-	    recipe.save(function(err) {
-		if (err)
-		    res.send(err);
-		res.json({ message: 'Recipe updated!' });
-	    });
-	});
+    .put(function (req, res) {
+        Recipe.findById(req.params.recipe_id, function (err, recipe) {
+            if (err)
+                res.send(err);
+            recipe.name = req.body.name;
+            recipe.ingredients.push(req.body.ingredient_id);
+            recipe.save(function (err) {
+                if (err)
+                    res.send(err);
+                res.json({message: 'Recipe updated!'});
+            });
+        });
     })
-    .delete(function(req, res) {
-	Recipe.remove({
-	    _id: req.params.recipe_id
-	}, function(err, recipe) {
-	    if (err)
-		res.send(err);
-	    res.json({ message: 'Successfully deleted' });
-	});
+    .delete(function (req, res) {
+        Recipe.remove({
+            _id: req.params.recipe_id
+        }, function (err, recipe) {
+            if (err)
+                res.send(err);
+            res.json({message: 'Successfully deleted'});
+        });
     });
 
 module.exports = router;
