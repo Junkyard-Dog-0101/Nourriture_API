@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var CommentSchema = new Schema({
     content: String,
     date: Date,
+    share: Boolean,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
