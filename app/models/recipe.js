@@ -7,29 +7,26 @@ var RecipeSchema = new Schema({
     name: String,
     description: String,
     content: String,
-    creationDate: Date,
-    creator: {
-	type: Schema.Types.ObjectId,
-	ref: 'User'
+    date: Date,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     ingredients: [{
-	type: Schema.Types.ObjectId,
-	ref: 'Ingredient'
+        type: Schema.Types.ObjectId,
+        ref: 'Ingredient'
     }],
     pictures: [{
-	type: Schema.Types.ObjectId,
-	ref: 'Picture'
+        type: Schema.Types.ObjectId,
+        ref: 'Picture'
     }],
     comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Comment'
     }],
-    ranks: [rank: {
-        type: String,
-	enum: ['1', '2', '3', '4', '5']
-    }, userId: {
-	type: Schema.Types.ObjectId,
-	ref: 'User'
+    ranks: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Rank'
     }]
 });
 

@@ -5,10 +5,10 @@ var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
     content: String,
-    creation: Date,
-    picture: {
-        type: Schema.Types.ObjecId,
-        ref: 'Picture'
+    date: Date,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

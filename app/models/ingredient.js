@@ -7,10 +7,10 @@ var IngredientSchema = new Schema({
     name: String,
     descrption: String,
     location: String,
-    Pictures: [{
-	type: Schema.Types.ObjecId,
-	ref: 'Picture'
-    }]
+    picture: {
+        type: Schema.Types.ObjectId,
+        ref: 'Picture'
+    }
 });
 
 module.exports = mongoose.model('Ingredient', IngredientSchema);
