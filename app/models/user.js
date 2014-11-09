@@ -8,15 +8,15 @@ var UserSchema = new Schema({
         password: String,
         firstName: String,
         lastName: String,
-        gender: String,
+        gender: Boolean,
         email: String,
         status: Boolean,
         phoneNumber: String,
         introduction: String,
-        registrationDate: Date,
+        registrationDate: { type: Date, default: Date.now },
         role: {
             type: String,
-            enum: ['normal', 'foodSupplier', 'gastronomist']
+            enum: ['normal', 'foodSupplier', 'gastronomist', 'admin']
         },
         picture: {
             type: Schema.Types.ObjectId,
