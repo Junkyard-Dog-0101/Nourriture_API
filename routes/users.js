@@ -22,6 +22,18 @@ router.route('/')
             res.json(users);
         });
     });
+router.route('/toto')
+    .get(function (req, res) {
+        if (!req.isAuthenticated()) {
+            return res.json({message: "WRONG"});
+        }
+        Recipe.find(function (err, recipes) {
+            if (err)
+                res.send(err);
+            res.json(recipes);
+        });
+    });
+
 
 router.route('/register')
     .get(function(req, res) {

@@ -2,6 +2,7 @@ var express = require('express');
 var Recipe = require('../app/models/recipe');
 var router = express.Router();
 var util = require("util");
+var passport = require('passport');
 
 router.route('/')
     .post(function (req, res) {
@@ -17,6 +18,9 @@ router.route('/')
         });
     })
     .get(function (req, res) {
+	if (!req.user) {
+	    return res.json({message: "WRONG"});
+	}
         Recipe.find(function (err, recipes) {
             if (err)
                 res.send(err);
