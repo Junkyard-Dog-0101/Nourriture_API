@@ -1,6 +1,6 @@
 api-nourriture
 ==============
-
+ping
 We have to understand how foreign-key works with mongoose and then implement the different ./app/models needed.
 
 curl test :
