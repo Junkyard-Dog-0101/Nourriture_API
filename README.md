@@ -15,7 +15,7 @@ How to test this project
 ---------
 curl test :
 
-part 1 user:
+Part 1 :The User Module:
 
 1.1 test if the server is running:
 
@@ -41,16 +41,16 @@ part 1 user:
 
 `curl -X PUT --data "firstName=ftest&lastName=ltest&email=123@456.com&gender=male&introduction=Hello World&phoneNumber=12345678" "http://127.0.0.1:8080/api/users/..."`
 
-part 2 food list
+Part 2 food list
 (To be added)
 
-part 3 food in detail
+Part 3 food in detail
 (To be added)
 
-part 4 message
+Part 4 message
 (To be added)
 
-part 5 admin
+Part 5 admin
 
 5.1 delete a user,replace ... with the userid.
 
