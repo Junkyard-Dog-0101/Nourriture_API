@@ -14,7 +14,9 @@ And run the code to start node server:`node server.js`
 How to test this project
 ---------
 curl test :
+
 part 1 user:
+
 1.1 test if the server is running:
 curl -X GET "http://127.0.0.1:8080/api/users/"
 
