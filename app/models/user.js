@@ -9,20 +9,26 @@ var UserSchema = new Schema({
     password: String,
     firstName: String,
     lastName: String,
-    gender: Boolean,
     email: String,
-    status: Boolean,
     phoneNumber: String,
-    introduction: String,
+    introduction: {type: String,default:"The one is too lazy to write anything."},
     registrationDate: { type: Date, default: Date.now },
+    gender: {
+        type:String,
+        enum:['male','female']
+    },
+    status: {
+        type:String,
+        enum:['default','other']
+    },
     role: {
         type: String,
         enum: ['normal', 'foodSupplier', 'gastronomist', 'admin']
     },
-    picture: {
+    picture: [{
         type: Schema.Types.ObjectId,
         ref: 'Picture'
-    },
+    }],
     healthProblems: [{
         type: Schema.Types.ObjectId,
         ref: 'HealthProblem'
