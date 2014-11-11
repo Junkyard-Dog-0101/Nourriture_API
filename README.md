@@ -55,3 +55,15 @@ Part 5 admin
 5.1 delete a user,replace ... with the userid.
 
 `curl -X DELETE "http://127.0.0.1:8080/api/users/..."`
+
+
+UPDATE :
+
+curl -X POST --data "username=toto&password=toto" "http://127.0.0.1:1234/api/register/"
+
+curl -X POST --data "username=titi&password=titi" "http://127.0.0.1:1234/api/register/"
+
+curl -X POST --header "Authorization: Basic dG90bzp0b3Rv" --data "to=5461e4db13fbfb3829886ad5&content=coucou" "http://127.0.0.1:1234/api/sendMessage"
+
+dG90bzp0b3Rv is toto:toto in base64 (https://www.base64decode.org/)
+to=user_id
