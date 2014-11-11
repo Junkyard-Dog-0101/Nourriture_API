@@ -43,11 +43,15 @@ part 1 user:
 
 part 2 food list
 (To be added)
+
 part 3 food in detail
 (To be added)
+
 part 4 message
 (To be added)
+
 part 5 admin
+
 5.1 delete a user,replace ... with the userid.
 
 `curl -X DELETE "http://127.0.0.1:8080/api/users/..."`
