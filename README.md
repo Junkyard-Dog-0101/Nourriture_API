@@ -29,11 +29,11 @@ curl -X GET "http://127.0.0.1:8080/api/users/`userid`"
 curl -X PUT --data "firstName=ftest&lastName=ltest&email=123@456.com&gender=male&introduction=Hello World&phoneNumber=12345678" "http://127.0.0.1:8080/api/users/`userid`"
 
 part 2 food list
-
+(To be added)
 part 3 food in detail
-
+(To be added)
 part 4 message
-
+(To be added)
 part 5 admin
 5.1 delete a user
 curl -X DELETE "http://127.0.0.1:8080/api/users/`userid`"
