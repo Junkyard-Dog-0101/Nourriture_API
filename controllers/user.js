@@ -7,15 +7,17 @@ exports.register = function(req, res) {
     });
     user.save(function(err) {
 	if (err)
-	    res.send(err);
-	res.json({ message: 'New user added' });
+	    res.status(400).json(err);
+	else
+	    res.status(201).json(user);
     });
 };
 
 exports.getUsers = function(req, res) {
     User.find(function(err, users) {
 	if (err)
-	    res.send(err);
-	res.json(users);
+	    res.status(400).json(err);
+	else
+	    res.status(200).json(users);
     });
 };

@@ -1,15 +1,17 @@
-// app/models/comment.js
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
-    content: String,
-    date: Date,
-    share: Boolean,
+    content: {
+	type: String,
+	required: true
+    },
+    date: { type: Date, default: Date.now },
+    share: { type: Boolean, default: true },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+	required: true
     }
 });
 
