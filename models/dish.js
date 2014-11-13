@@ -1,15 +1,14 @@
-// app/models/dish.js
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var DishSchema = new Schema({
     name: String,
     description: String,
-    date: Date,
+    date: { type: Date, default: Date.now },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+	required: true
     },
     recipe: {
         type: Schema.Types.ObjectId,

@@ -1,5 +1,3 @@
-// app/models/recipe.js
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -13,7 +11,8 @@ var RecipeSchema = new Schema({
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+	required: true
     },
     ingredients: [{
         type: Schema.Types.ObjectId,
@@ -21,7 +20,7 @@ var RecipeSchema = new Schema({
     }],
     pictures: [{
         type: Schema.Types.ObjectId,
-        ref: 'Picture'
+        ref: 'Picture',
     }],
     comments: [{
         type: Schema.Types.ObjectId,

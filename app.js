@@ -7,6 +7,8 @@ var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
 var messageController = require('./controllers/message');
 var ingredientController = require('./controllers/ingredient');
+var recipeController = require('./controllers/recipe');
+var dishController = require('./controllers/dish');
 var authController = require('./controllers/auth');
 var adminController = require('./controllers/admin');
 
