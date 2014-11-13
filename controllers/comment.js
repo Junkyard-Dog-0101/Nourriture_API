@@ -27,7 +27,7 @@ exports.getComment = function(req, res) {
 	if (err)
 	    res.status(400).json(err);
 	else if (!comment)
-	    res.status(404);
+	    res.status(404).end();
 	else
 	    res.status(200).json(comment);
     });
@@ -37,10 +37,8 @@ exports.putComment = function(req, res) {
     Comment.update({ user: req.user._id, _id: req.params.comment_id }, { content: req.body.content }, function(err, num, raw) {
 	if (err)
 	    res.status(400).json(err);
-	else {
-	    res.status(204);
-	    res.end();
-	}
+	else
+	    res.status(204).end();
     });
 };
 

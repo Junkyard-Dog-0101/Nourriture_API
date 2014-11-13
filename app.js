@@ -6,7 +6,9 @@ var passport = require('passport');
 var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
 var messageController = require('./controllers/message');
+var ingredientController = require('./controllers/ingredient');
 var authController = require('./controllers/auth');
+var adminController = require('./controllers/admin');
 
 var port = process.env.PORT || 1234;
 
@@ -31,26 +33,13 @@ router.route('/getSendedMessage')
 router.route('/sendMessage')
     .post(authController.isAuthenticated, messageController.sendMessage);
 
-/*router.route('/users/:user_id')
-    .get(authController.isAuthenticated, beerController.getBeer)
-    .put(authController.isAuthenticated, beerController.putBeer)
-    .delete(authController.isAuthenticated, beerController.deleteBeer);*/
-
 router.route('/register')
-    .post(userController.register)
+    .post(userController.register);
 
 router.route('/users')
 //  .post(userController.postUsers)
     .get(authController.isAuthenticated, userController.getUsers);
 
-//router.route('/ingredients')
-// .post(authController.isAdmin, ingredientController.postIngredients)
-  //  .get(ingredientController.getIngredients);
-
-//router.route('/ingredients/:ingredient_id')
-  //  .get(ingredientController.getIngredient)
-// .put(authController.isAdmin, ingredientController.putIngredient)
-// .delete(authController.isAdmin, ingredientController.deleteIngredient);
 
 /*router.route('/recipes')
     .post(authController.isAuthenticated, recipeController.postRecipes)
@@ -79,7 +68,14 @@ router.route('/comments')
     .post(authController.isAuthenticated, commentController.postComments)
     .get(commentController.getComments);
 
+router.route('/ingredients/:comment_id')
+    .get(ingredientController.getIngredient)
+    .put(adminController.isAdmin, ingredientController.putIngredient)
+    .delete(adminController.isAdmin, ingredientController.deleteIngredient);
 
+router.route('/ingredients')
+    .post(adminController.isAdmin, ingredientController.postIngredients)
+    .get(ingredientController.getIngredients);
 
 app.use('/api', router);
 

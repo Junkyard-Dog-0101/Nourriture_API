@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var IngredientSchema = new Schema({
     name: String,
-    descrption: String,
+    description: String,
     location: String,
     picture: {
         type: Schema.Types.ObjectId,
