@@ -9,10 +9,11 @@ var messageController = require('./controllers/message');
 var ingredientController = require('./controllers/ingredient');
 var recipeController = require('./controllers/recipe');
 var dishController = require('./controllers/dish');
+var problemController = require('./controllers/problem');
 var authController = require('./controllers/auth');
 var adminController = require('./controllers/admin');
 
-var port = process.env.PORT || 1234;
+var port = process.env.PORT || 1337;
 
 var app = express();
 
@@ -42,25 +43,6 @@ router.route('/users')
 //  .post(userController.postUsers)
     .get(authController.isAuthenticated, userController.getUsers);
 
-
-/*router.route('/recipes')
-    .post(authController.isAuthenticated, recipeController.postRecipes)
-    .get(recipeController.getRecipes);
-
-router.route('/recipes/:recipe_id')
-    .get(recipeController.getRecipe)
-    .put(authController.isAuthenticated, recipeController.putRecipe)
-    .delete(authController.isAuthenticated, recipeController.deleteRecipe);
-
-router.route('/dishes')
-    .post(authController.isAuthenticated, dishController.postDishes)
-    .get(dishController.getDishes);
-
-router.route('/dishes/:dish_id')
-    .get(dishController.getDish)
-    .put(authController.isAuthenticated, dishController.putDish)
-    .delete(authController.isAuthenticated, dishController.deleteDish);
-*/
 router.route('/comments/:comment_id')
     .get(commentController.getComment)
     .put(authController.isAuthenticated, commentController.putComment)
@@ -89,13 +71,22 @@ router.route('/recipes')
     .get(recipeController.getRecipes);
 
 router.route('/dishes/:dish_id')
-    .get(recipeController.getRecipe)
-    .put(authController.isAuthenticated, recipeController.putRecipe)
-    .delete(authController.isAuthenticated, recipeController.deleteRecipe);
+    .get(dishController.getDish)
+    .put(authController.isAuthenticated, dishController.putDish)
+    .delete(authController.isAuthenticated, dishController.deleteDish);
 
 router.route('/dishes')
-    .post(authController.isAuthenticated, recipeController.postRecipes)
-    .get(recipeController.getRecipes);
+    .post(authController.isAuthenticated, dishController.postDishes)
+    .get(dishController.getDishes);
+
+router.route('/problems/:problem_id')
+    .get(problemController.getProblem)
+    .put(adminController.isAdmin, problemController.putProblem)
+    .delete(adminController.isAdmin, problemController.deleteProblem);
+
+router.route('/problems')
+    .post(authController.isAuthenticated, problemController.postProblems)
+    .get(problemController.getProblems);
 
 app.use('/api', router);
 
