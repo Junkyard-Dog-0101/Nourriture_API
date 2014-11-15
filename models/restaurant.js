@@ -1,26 +1,20 @@
-// app/models/restaurant.js
-
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var RestaurantSchema = new Schema({
+var RestaurantSchema = new mongoose.Schema({
     login: String,
     password: String,
     name: String,
     email: String,
-    phoneNumer: String,
+    phoneNumber: String,
     introduction: String,
     registrationDate: date,
-    pictures: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Picture'
-    }],
+    pictures: [String],
     dishes: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Dish'
     }],
     friends: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }, {
         type: String,

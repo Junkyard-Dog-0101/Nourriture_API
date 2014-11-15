@@ -1,37 +1,32 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var DishSchema = new Schema({
+var DishSchema = new mongoose.Schema({
     name: String,
     description: String,
-    date: { type: Date, default: Date.now },
+    date: {
+        type: Date,
+        default: Date.now
+    },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-	required: true
+        required: true
     },
     recipe: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Recipe'
     },
-    healthProblems: [{
-        type: Schema.Types.ObjectId,
-        ref: 'HealthProblem'
+    problems: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Problem'
     }],
-    ethicsReligions: [{
-        type: Schema.Types.ObjectId,
-        ref: 'EthicReligion'
-    }],
-    pictures: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Picture'
-    }],
+    pictures: [String],
     comments: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
     }],
     ranks: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank'
     }]
 });

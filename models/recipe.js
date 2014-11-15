@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var RecipeSchema = new Schema({
+var RecipeSchema = new mongoose.Schema({
     name: String,
     description: String,
     content: String,
@@ -10,24 +9,21 @@ var RecipeSchema = new Schema({
         default: Date.now
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-	required: true
+        required: true
     },
     ingredients: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'
     }],
-    pictures: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Picture',
-    }],
+    pictures: [String],
     comments: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
     }],
     ranks: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Rank'
     }]
 });

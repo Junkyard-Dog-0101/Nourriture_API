@@ -1,16 +1,10 @@
-// app/models/ingredient.js
-
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var IngredientSchema = new Schema({
+var IngredientSchema = new mongoose.Schema({
     name: String,
     description: String,
     location: String,
-    picture: {
-        type: Schema.Types.ObjectId,
-        ref: 'Picture'
-    }
+    picture: [String]
 });
 
 module.exports = mongoose.model('Ingredient', IngredientSchema);

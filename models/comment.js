@@ -1,17 +1,22 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var CommentSchema = new Schema({
+var CommentSchema = new mongoose.Schema({
     content: {
-	type: String,
-	required: true
+        type: String,
+        required: true
     },
-    date: { type: Date, default: Date.now },
-    share: { type: Boolean, default: true },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    share: {
+        type: Boolean,
+        default: true
+    },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-	required: true
+        required: true
     }
 });
 

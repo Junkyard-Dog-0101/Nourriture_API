@@ -1,15 +1,12 @@
-// app/models/rank.js
-
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var RankSchema = new Schema({
+var RankSchema = new mongoose.Schema({
     star: {
         type: String,
         enum: ['1', '2', '3', '4', '5']
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 });

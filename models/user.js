@@ -3,15 +3,18 @@ var bcrypt = require('bcrypt-nodejs');
 
 var UserSchema = new mongoose.Schema({
     username: {
-	type: String,
-	unique: true,
-	required: true
+        type: String,
+        unique: true,
+        required: true
     },
     password: {
-	type: String,
-	required: true
+        type: String,
+        required: true
     },
-    admin: { type: Boolean, default: false },
+    admin: {
+        type: Boolean,
+        default: false
+    },
     firstName: String,
     lastName: String,
     gender: Boolean,
@@ -19,22 +22,18 @@ var UserSchema = new mongoose.Schema({
     status: Boolean,
     phoneNumber: String,
     introduction: String,
-    registrationDate: { type: Date, default: Date.now },
+    registrationDate: {
+        type: Date,
+        default: Date.now
+    },
     role: {
         type: String,
         enum: ['normal', 'foodSupplier', 'gastronomist', 'admin']
     },
-    picture: {
+    picture: String,
+    problems: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Picture'
-    },
-    healthProblems: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'HealthProblem'
-    }],
-    ethicsReligions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'EthicReligion'
+        ref: 'Problem'
     }],
     friends: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -45,27 +44,27 @@ var UserSchema = new mongoose.Schema({
     }]
 });
 
-UserSchema.pre('save', function(callback) {
+UserSchema.pre('save', function (callback) {
     var user = this;
     if (!user.isModified('password'))
-	return callback();
-    bcrypt.genSalt(5, function(err, salt) {
-	if (err)
-	    return callback(err);
-	bcrypt.hash(user.password, salt, null, function(err, hash) {
-	    if (err)
-		return callback(err);
-	    user.password = hash;
-	    callback();
-	});
+        return callback();
+    bcrypt.genSalt(5, function (err, salt) {
+        if (err)
+            return callback(err);
+        bcrypt.hash(user.password, salt, null, function (err, hash) {
+            if (err)
+                return callback(err);
+            user.password = hash;
+            callback();
+        });
     });
 });
 
-UserSchema.methods.verifyPassword = function(password, cb) {
-    bcrypt.compare(password, this.password, function(err, isMatch) {
-	if (err)
-	    return cb(err);
-	cb(null, isMatch);
+UserSchema.methods.verifyPassword = function (password, cb) {
+    bcrypt.compare(password, this.password, function (err, isMatch) {
+        if (err)
+            return cb(err);
+        cb(null, isMatch);
     });
 };
 

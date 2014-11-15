@@ -70,7 +70,7 @@ router.route('/comments')
     .post(authController.isAuthenticated, commentController.postComments)
     .get(commentController.getComments);
 
-router.route('/ingredients/:comment_id')
+router.route('/ingredients/:ingredient_id')
     .get(ingredientController.getIngredient)
     .put(adminController.isAdmin, ingredientController.putIngredient)
     .delete(adminController.isAdmin, ingredientController.deleteIngredient);
@@ -78,6 +78,24 @@ router.route('/ingredients/:comment_id')
 router.route('/ingredients')
     .post(adminController.isAdmin, ingredientController.postIngredients)
     .get(ingredientController.getIngredients);
+
+router.route('/recipes/:recipe_id')
+    .get(recipeController.getRecipe)
+    .put(authController.isAuthenticated, recipeController.putRecipe)
+    .delete(authController.isAuthenticated, recipeController.deleteRecipe);
+
+router.route('/recipes')
+    .post(authController.isAuthenticated, recipeController.postRecipes)
+    .get(recipeController.getRecipes);
+
+router.route('/dishes/:dish_id')
+    .get(recipeController.getRecipe)
+    .put(authController.isAuthenticated, recipeController.putRecipe)
+    .delete(authController.isAuthenticated, recipeController.deleteRecipe);
+
+router.route('/dishes')
+    .post(authController.isAuthenticated, recipeController.postRecipes)
+    .get(recipeController.getRecipes);
 
 app.use('/api', router);
 
