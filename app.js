@@ -11,6 +11,15 @@ var recipeController = require('./controllers/recipe');
 var dishController = require('./controllers/dish');
 var problemController = require('./controllers/problem');
 var authController = require('./controllers/auth');
+
+var adminGroup = function() {
+    return function(req, res, next) {
+        if (req.user.admin == true)
+            next();
+        else
+            res.status(401).json('Unauthorized');
+    };
+};
 //var adminController = require('./controllers/admin');
 
 var port = process.env.PORT || 1337;
@@ -54,11 +63,11 @@ router.route('/comments')
 
 router.route('/ingredients/:ingredient_id')
     .get(ingredientController.getIngredient)
- //   .put(adminController.isAdmin, ingredientController.putIngredient)
-//    .delete(adminController.isAdmin, ingredientController.deleteIngredient);
+    .put(authController.isAuthenticated, adminGroup(), ingredientController.putIngredient)
+    .delete(authController.isAuthenticated, adminGroup(), ingredientController.deleteIngredient);
 
 router.route('/ingredients')
-   // .post(adminController.isAdmin, ingredientController.postIngredients)
+    .post(authController.isAuthenticated, adminGroup(), ingredientController.postIngredients)
     .get(ingredientController.getIngredients);
 
 router.route('/recipes/:recipe_id')
@@ -81,8 +90,8 @@ router.route('/dishes')
 
 router.route('/problems/:problem_id')
     .get(problemController.getProblem)
-    //.put(adminController.isAdmin, problemController.putProblem)
-   // .delete(adminController.isAdmin, problemController.deleteProblem);
+    .put(authController.isAuthenticated, adminGroup(), problemController.putProblem)
+    .delete(authController.isAuthenticated, adminGroup(), problemController.deleteProblem);
 
 router.route('/problems')
     .post(authController.isAuthenticated, problemController.postProblems)

@@ -7,23 +7,26 @@ exports.sendMessage = function (req, res) {
     message.to = req.body.to;
     message.save(function (err) {
         if (err)
-            res.send(err);
-        res.json({message: 'Message sended', data: message});
+            res.status(400).json(err);
+        else
+            res.status(201).json(message);
     });
 };
 
 exports.getReceivedMessage = function (req, res) {
     Message.find({to: req.user._id}, function (err, messages) {
         if (err)
-            res.send(err);
-        res.json(messages);
+            res.status(400).json(err);
+        else
+            res.status(200).json(messages);
     });
 };
 
 exports.getSendedMessage = function (req, res) {
     Message.find({from: req.user._id}, function (err, messages) {
         if (err)
-            res.send(err);
-        res.json(messages);
+            res.status(400).json(err);
+        else
+            res.status(200).json(messages);
     });
 };
