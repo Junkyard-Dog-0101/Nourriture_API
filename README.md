@@ -2,68 +2,31 @@ api-nourriture
 ==============
 How to run this project
 ---------
-This project is based on nodejs. So we assume that you've finished seting nodejs development envirement including nodejs,mongodb,npm.Then let's begin!
+This project is based on nodejs. So we assume that you've finished setting the nodejs development envirement including nodejs,mongodb and npm.
+
 Our development envirment is set on Ubuntu 14.04,and the development machine must have good intenet connection.
 
-After you've get the code, run:`npm install`,if it comes error message,try to use `sudo npm install`.
+After you've get the code from the github, run:`npm install`,if it comes error message,try to use `sudo npm install`.
 
 Then make sure your mongodb service is running.
 
-And run the code to start node server:`node server.js` 
+And run the code to start node server:`node app.js` 
 
 How to test this project
 ---------
-curl test :
+User curl to test :
 
-Part 1 :The User Module:
+1.register a user named toto and password is toto
 
-1.1 test if the server is running:
+`curl -X POST --data "username=toto&password=toto" "http://127.0.0.1:1337/api/register/"`
 
-`curl -X GET "http://127.0.0.1:8080/api/users/"`
+2.register a user named titi and password is titi
 
-1.2 add a user:
+`curl -X POST --data "username=titi&password=titi" "http://127.0.0.1:1337/api/register/"`
 
-`curl -X POST --data "username=test&password=123456&firstName=ftest&lastName=ltest&email=123@456.com&gender=male" "http://127.0.0.1:8080/api/users/register/"`
+3.toto login and send message "coucou" to titi
 
-1.3 user login
+`curl -X POST --header "Authorization: Basic dG90bzp0b3Rv" --data "to=5461e4db13fbfb3829886ad5&content=coucou" "http://127.0.0.1:1337/api/sendMessage"`
 
-`curl -X POST --data "username=test&password=123456" "http://127.0.0.1:8080/api/users/login/"`
-
-1.4 user logout
-
-`curl -X GET "http://127.0.0.1:8080/api/users/logout/"`
-
-1.5 display user profile,replace ... with the userid.
-
-`curl -X GET "http://127.0.0.1:8080/api/users/..."`
-
-1.6 modify user profile,replace ... with the userid.
-
-`curl -X PUT --data "firstName=ftest&lastName=ltest&email=123@456.com&gender=male&introduction=Hello World&phoneNumber=12345678" "http://127.0.0.1:8080/api/users/..."`
-
-Part 2 food list
-(To be added)
-
-Part 3 food in detail
-(To be added)
-
-Part 4 message
-(To be added)
-
-Part 5 admin
-
-5.1 delete a user,replace ... with the userid.
-
-`curl -X DELETE "http://127.0.0.1:8080/api/users/..."`
-
-
-UPDATE :
-
-curl -X POST --data "username=toto&password=toto" "http://127.0.0.1:1234/api/register/"
-
-curl -X POST --data "username=titi&password=titi" "http://127.0.0.1:1234/api/register/"
-
-curl -X POST --header "Authorization: Basic dG90bzp0b3Rv" --data "to=5461e4db13fbfb3829886ad5&content=coucou" "http://127.0.0.1:1234/api/sendMessage"
-
-dG90bzp0b3Rv is toto:toto in base64 (https://www.base64decode.org/)
+mark:dG90bzp0b3Rv is toto:toto in base64 (https://www.base64decode.org/)
 to=user_id
