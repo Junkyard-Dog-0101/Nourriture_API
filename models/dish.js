@@ -20,15 +20,7 @@ var DishSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Problem'
     }],
-    pictures: [String],
-    comments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-    }],
-    ranks: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Rank'
-    }]
+    pictures: [String]
 });
 
 module.exports = mongoose.model('Dish', DishSchema);

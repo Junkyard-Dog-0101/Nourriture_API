@@ -17,15 +17,7 @@ var RecipeSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'
     }],
-    pictures: [String],
-    comments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-    }],
-    ranks: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Rank'
-    }]
+    pictures: [String]
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);
