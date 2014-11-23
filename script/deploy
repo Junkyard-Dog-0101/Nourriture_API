@@ -2,4 +2,4 @@
 
 cd /home/api-nourriture
 git pull
-forever restart app.jd
+forever restart app.js
