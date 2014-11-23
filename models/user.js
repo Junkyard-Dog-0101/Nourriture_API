@@ -28,7 +28,7 @@ var UserSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['normal', 'foodSupplier', 'gastronomist', 'admin']
+        enum: ['normal', 'foodSupplier', 'gastronomist']
     },
     picture: String,
     problems: [{
@@ -59,6 +59,14 @@ UserSchema.pre('save', function (callback) {
         });
     });
 });
+
+
+UserSchema.methods.toJSON = function() {
+    var obj = this.toObject();
+    delete obj.password;
+    delete obj.admin;
+    return obj
+};
 
 UserSchema.methods.verifyPassword = function (password, cb) {
     bcrypt.compare(password, this.password, function (err, isMatch) {
