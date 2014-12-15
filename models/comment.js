@@ -24,7 +24,8 @@ var CommentSchema = new mongoose.Schema({
     },
     targetType: {
         type: String,
-        enum: ['dish', 'ingredient', 'recipe']
+        enum: ['dish', 'ingredient', 'recipe'],
+        required: true
     }
 });
 

@@ -3,6 +3,8 @@ var Comment = require('../models/comment');
 exports.postComments = function (req, res) {
     var comment = new Comment();
     comment.content = req.body.content;
+    comment.target = req.body.target;
+    comment.targetType = req.body.targetType;
     comment.share = req.body.share;
     comment.user = req.user._id;
     comment.save(function (err) {

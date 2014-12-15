@@ -2,13 +2,13 @@
   "name": "api-nourriture",
   "main": "app.js",
   "dependencies": {
-    "express": "4.10.1",
-    "mongoose": "3.8.18",
-    "body-parser": "1.9.2",
+    "express": "4.10.6",
+    "mongoose": "3.8.20",
+    "body-parser": "1.10.0",
     "bcrypt-nodejs": "0.0.3",
     "passport": "0.2.1",
     "passport-http": "0.2.2",
     "mocha": "2.0.1",
-    "supertest": "0.14.0"
+    "supertest": "0.15.0"
   }
 }

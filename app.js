@@ -20,7 +20,6 @@ var adminGroup = function() {
             res.status(401).json('Unauthorized');
     };
 };
-//var adminController = require('./controllers/admin');
 
 var port = process.env.PORT || 1337;
 

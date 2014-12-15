@@ -65,6 +65,7 @@ UserSchema.methods.toJSON = function() {
     var obj = this.toObject();
     delete obj.password;
     delete obj.admin;
+    delete obj.__v;
     return obj
 };
 
