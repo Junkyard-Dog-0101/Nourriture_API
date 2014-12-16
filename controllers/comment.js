@@ -1,4 +1,7 @@
 var Comment = require('../models/comment');
+var Notification = require('../models/notification');
+var Recipe = require('../models/recipe');
+var Dish = require('../models/dish');
 
 exports.postComments = function (req, res) {
     var comment = new Comment();
@@ -7,12 +10,45 @@ exports.postComments = function (req, res) {
     comment.targetType = req.body.targetType;
     comment.share = req.body.share;
     comment.user = req.user._id;
-    comment.save(function (err) {
-        if (err)
-            res.status(400).json(err);
-        else
-            res.status(201).json(comment);
-    });
+    var notification = new Notification();
+    notification.content = "new comment on your " + req.body.targetType;
+    notification.target = req.body.target;
+    notification.targetType = req.body.targetType;
+
+    if (req.body.targetType == "dish") {
+        Dish.find({_id: req.body.target}, function (err, dish) {
+            if (err)
+                res.status(400).json(err);
+            else {
+                notification.user = dish[0]["user"];
+                comment.save(function (err) {
+                    if (err)
+                        res.status(400).json(err);
+                    else {
+                        res.status(201).json(comment);
+                        notification.save();
+                    }
+                });
+            }
+        });
+    }
+    else if (req.body.targetType == "recipe") {
+        Recipe.find({_id: req.body.target}, function (err, recipe) {
+            if (err)
+                res.status(400).json(err);
+            else {
+                notification.user = recipe[0]["user"];
+                comment.save(function (err) {
+                    if (err)
+                        res.status(400).json(err);
+                    else {
+                        notification.save();
+                        res.status(201).json(comment);
+                    }
+                });
+            }
+        });
+    }
 };
 
 exports.getComments = function (req, res) {

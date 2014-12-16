@@ -34,13 +34,6 @@ var UserSchema = new mongoose.Schema({
     problems: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Problem'
-    }],
-    friends: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }, {
-        type: String,
-        enum: ['normal', 'block', 'blocked', 'request', 'requested']
     }]
 });
 

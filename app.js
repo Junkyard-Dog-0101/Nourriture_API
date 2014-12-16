@@ -11,6 +11,7 @@ var recipeController = require('./controllers/recipe');
 var dishController = require('./controllers/dish');
 var problemController = require('./controllers/problem');
 var authController = require('./controllers/auth');
+var notificationController = require('./controllers/notification');
 
 var adminGroup = function() {
     return function(req, res, next) {
@@ -50,6 +51,15 @@ router.route('/register')
 router.route('/users')
 //  .post(userController.postUsers)
     .get(authController.isAuthenticated, userController.getUsers);
+
+/*router.route('/notifications/:notification_id')
+    .get(commentController.getComment)
+    .put(authController.isAuthenticated, commentController.putComment)
+    .delete(authController.isAuthenticated, commentController.deleteComment);*/
+
+router.route('/notifications')
+   // .post(authController.isAuthenticated, notificationController.postComments)
+    .get(notificationController.getNotifications);
 
 router.route('/comments/:comment_id')
     .get(commentController.getComment)
