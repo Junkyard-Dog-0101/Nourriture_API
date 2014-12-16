@@ -1,13 +1,12 @@
 var Notification = require('../models/notification');
 
-
 exports.getNotifications = function (req, res) {
-    Notification.find({}, function (err, Notifications) {
-        if (err)
-            res.status(400).json(err);
-        else
-            res.status(200).json(Notifications);
-    });
+  Notification.find(function (err, Notifications) {
+    if (err)
+      res.status(400).json(err);
+    else
+      res.status(200).json(Notifications);
+  });
 };
 
 /*exports.getNotification = function (req, res) {
@@ -22,15 +21,12 @@ exports.getNotifications = function (req, res) {
 };*/
 
 exports.putNotification = function (req, res) {
-    Notification.update({
-        _id: req.params.notification_id, user: req.user._id
-    }, {content: req.body.content,
-        read: req.body.read}, function (err, num, raw) {
-        if (err)
-            res.status(400).json(err);
-        else
-            res.status(204).end();
-    });
+  Notification.update({ _id: req.params.notification_id, user: req.user._id }, { content: req.body.content, read: req.body.read }, function (err, num, raw) {
+    if (err)
+      res.status(400).json(err);
+    else
+      res.status(204).end();
+  });
 };
 
 /*
