@@ -45,17 +45,22 @@ router.route('/getSendedMessage')
 router.route('/sendMessage')
     .post(authController.isAuthenticated, messageController.sendMessage);
 
-router.route('/register')
-    .post(userController.register);
+//router.route('/register')
+  //  .post(userController.register);
 
 router.route('/users')
-//  .post(userController.postUsers)
+    .post(userController.postUsers)
     .get(authController.isAuthenticated, userController.getUsers);
 
-/*router.route('/notifications/:notification_id')
-    .get(commentController.getComment)
-    .put(authController.isAuthenticated, commentController.putComment)
-    .delete(authController.isAuthenticated, commentController.deleteComment);*/
+router.route('/users/:user_id')
+    .get(userController.getUser)
+    .put(authController.isAuthenticated, userController.putUser)
+    .delete(authController.isAuthenticated, adminGroup(), userController.deleteUser);
+
+router.route('/notifications/:notification_id')
+    //.get(notificationController.getNotification)
+    .put(authController.isAuthenticated, notificationController.putNotification)
+  //  .delete(authController.isAuthenticated, notificationController.deleteNotification);
 
 router.route('/notifications')
    // .post(authController.isAuthenticated, notificationController.postComments)

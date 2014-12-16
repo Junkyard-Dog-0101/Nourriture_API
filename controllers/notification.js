@@ -19,13 +19,13 @@ exports.getNotifications = function (req, res) {
         else
             res.status(200).json(Notification);
     });
-};
+};*/
 
 exports.putNotification = function (req, res) {
     Notification.update({
-        user: req.user._id,
-        _id: req.params.Notification_id
-    }, {content: req.body.content}, function (err, num, raw) {
+        _id: req.params.notification_id, user: req.user._id
+    }, {content: req.body.content,
+        read: req.body.read}, function (err, num, raw) {
         if (err)
             res.status(400).json(err);
         else
@@ -33,6 +33,7 @@ exports.putNotification = function (req, res) {
     });
 };
 
+/*
 exports.deleteNotification = function (req, res) {
     Notification.remove({user: req.user._id, _id: req.params.Notification_id}, function (err) {
         if (err)

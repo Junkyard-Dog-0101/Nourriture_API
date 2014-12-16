@@ -19,7 +19,12 @@ var NotificationSchema = new mongoose.Schema({
         type: String,
         enum: ['message', 'dish', 'recipe', 'friend', 'like'],
         required: true
+    },
+    read: {
+        type: Boolean,
+        default: false
     }
+    /* if it's a message the target is not the message id it's the user is who send the message */
 });
 
 module.exports = mongoose.model('Notification', NotificationSchema);
