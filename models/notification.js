@@ -28,3 +28,5 @@ var NotificationSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Notification', NotificationSchema);
+
+/* todo : add get read unread */

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var FriendSchema = new mongoose.Schema({
     content: {
         type: String,
-        required: true
+        default: "Hi, I want to be your friend"
     },
     from: {
         type: mongoose.Schema.Types.ObjectId,
@@ -18,7 +18,8 @@ var FriendSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ['accept', 'request'],
-        required: true
+        required: true,
+        default: "request"
     }
 });
 
