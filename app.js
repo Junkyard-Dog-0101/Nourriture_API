@@ -58,12 +58,12 @@ router.route('/sendMessage')
 router.route('/getMyNotifications/')
   .get(authController.isAuthenticated, notificationController.getMyNotifications);
 
-//router.route('/register')
-  //  .post(userController.register);
+router.route('/login')
+  .post(authController.isAuthenticated, userController.login);
 
 router.route('/users')
   .post(userController.postUsers)
-  .get(authController.isAuthenticated, userController.getUsers);
+  .get(userController.getUsers);
 
 router.route('/users/:user_id')
   .get(userController.getUser)
