@@ -12,6 +12,7 @@ var dishController = require('./controllers/dish');
 var problemController = require('./controllers/problem');
 var authController = require('./controllers/auth');
 var notificationController = require('./controllers/notification');
+var friendController = require('./controllers/friend')
 
 var adminGroup = function() {
   return function(req, res, next) {
@@ -36,14 +37,26 @@ app.use(passport.initialize());
 
 var router = express.Router();
 
+router.route('/sendFriendRequest')
+  .post(authController.isAuthenticated, friendController.sendFriendRequest);
+router.route('/validateFriendRequest')
+  .put(authController.isAuthenticated, friendController.validateFriendRequest);
+router.route('/getMyFriend')
+  .get(authController.isAuthenticated, friendController.getMyFriend);
+router.route('/getMyFriendRequest')
+  .get(authController.isAuthenticated, friendController.getMyFriendRequest);
+router.route('/deleteFriend')
+  .delete(authController.isAuthenticated, friendController.deleteFriend);
+
 router.route('/getReceivedMessage')
   .get(authController.isAuthenticated, messageController.getReceivedMessage);
-
 router.route('/getSendedMessage')
   .get(authController.isAuthenticated, messageController.getSendedMessage);
-
 router.route('/sendMessage')
   .post(authController.isAuthenticated, messageController.sendMessage);
+
+router.route('/getMyNotifications/')
+  .get(authController.isAuthenticated, notificationController.getMyNotifications);
 
 //router.route('/register')
   //  .post(userController.register);
@@ -59,7 +72,7 @@ router.route('/users/:user_id')
 
 router.route('/notifications/:notification_id')
   .put(authController.isAuthenticated, notificationController.putNotification)
-  //  .delete(authController.isAuthenticated, notificationController.deleteNotification);
+  //.delete(authController.isAuthenticated, adminGroup(), notificationController.deleteNotification);
   //.get(notificationController.getNotification)
 
 router.route('/notifications')

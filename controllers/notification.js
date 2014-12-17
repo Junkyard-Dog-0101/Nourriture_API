@@ -8,6 +8,15 @@ exports.getNotifications = function (req, res) {
       res.status(200).json(Notifications);
   });
 };
+/* delete  getNotifications delete (droit )*/
+exports.getMyNotifications = function (req, res) {
+  Notification.find({ user: req.user._id }, function (err, Notifications) {
+    if (err)
+      res.status(400).json(err);
+    else
+      res.status(200).json(Notifications);
+  });
+};
 
 /*exports.getNotification = function (req, res) {
     Notification.find({_id: req.params.Notification_id}, function (err, Notification) {
