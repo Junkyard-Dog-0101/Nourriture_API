@@ -1,26 +1,26 @@
 var Ingredient = require('../models/ingredient');
 
 exports.postIngredients = function (req, res) {
-  var ingredient = new Ingredient();
-  ingredient.name = req.body.name;
-  ingredient.description = req.body.description;
-  ingredient.location = req.body.location;
-  ingredient.picture = req.body.picture;
-  ingredient.save(function (err) {
-    if (err)
-      res.status(400).json(err);
-    else
-      res.status(201).json(ingredient);
-  });
+    var ingredient = new Ingredient();
+    ingredient.name = req.body.name;
+    ingredient.description = req.body.description;
+    ingredient.location = req.body.location;
+    ingredient.picture = req.body.picture;
+    ingredient.save(function (err) {
+        if (err)
+            res.status(400).json(err);
+        else
+            res.status(201).json(ingredient);
+    });
 };
 
 exports.getIngredients = function (req, res) {
-  Ingredient.find({}, function (err, ingredients) {
-    if (err)
-      res.status(400).json(err);
-    else
-      res.status(200).json(ingredients);
-  });
+    Ingredient.find({}, function (err, ingredients) {
+        if (err)
+            res.status(400).json(err);
+        else
+            res.status(200).json(ingredients);
+    });
 };
 
 exports.getIngredient = function (req, res) {
