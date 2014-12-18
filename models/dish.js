@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 var DishSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   description: String,
   date: {
     type: Date,
@@ -13,9 +16,13 @@ var DishSchema = new mongoose.Schema({
     required: true
   },
   recipe: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Recipe'
+    type: String,
+    default: 'Recipe string'
   },
+  ingredients: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Ingredient'
+  }],
   problems: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Problem'

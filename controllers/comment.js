@@ -1,53 +1,32 @@
 var Comment = require('../models/comment');
 var Notification = require('../models/notification');
-var Recipe = require('../models/recipe');
 var Dish = require('../models/dish');
 
 exports.postComments = function (req, res) {
   var comment = new Comment();
   comment.content = req.body.content;
-  comment.target = req.body.target;
-  comment.targetType = req.body.targetType;
+  comment.dish = req.body.dish;
   comment.share = req.body.share;
   comment.user = req.user._id;
   var notification = new Notification();
-  notification.content = "new comment on your " + req.body.targetType;
+  notification.content = "new comment on your recipe";
   notification.target = req.body.target;
-  notification.targetType = req.body.targetType;
-  if (req.body.targetType == "dish") {
-    Dish.find({_id: req.body.target}, function (err, dish) {
-      if (err)
-        res.status(400).json(err);
-      else {
-        notification.user = dish[0]["user"];
-        comment.save(function (err) {
-          if (err)
-            res.status(400).json(err);
-          else {
-            res.status(201).json(comment);
-            notification.save();
-          }
-        });
-      }
-    });
-  }
-  else if (req.body.targetType == "recipe") {
-    Recipe.find({_id: req.body.target}, function (err, recipe) {
-      if (err)
-        res.status(400).json(err);
-      else {
-        notification.user = recipe[0]["user"];
-        comment.save(function (err) {
-          if (err)
-            res.status(400).json(err);
-          else {
-            notification.save();
-            res.status(201).json(comment);
-          }
-        });
-      }
-    });
-  }
+  notification.targetType = 'dish';
+  Dish.find({_id: req.body.dish}, function (err, dish) {
+    if (err)
+      res.status(400).json(err);
+    else {
+      notification.user = dish[0]["user"];
+      comment.save(function (err) {
+        if (err)
+          res.status(400).json(err);
+        else {
+          res.status(201).json(comment);
+          notification.save();
+        }
+      });
+    }
+  });
 };
 
 exports.getComments = function (req, res) {

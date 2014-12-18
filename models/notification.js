@@ -17,7 +17,7 @@ var NotificationSchema = new mongoose.Schema({
   },
   targetType: {
     type: String,
-    enum: ['message', 'dish', 'recipe', 'friend', 'rank'],
+    enum: ['message', 'dish', 'friend', 'rank', 'comment'],
     required: true
   },
   read: {

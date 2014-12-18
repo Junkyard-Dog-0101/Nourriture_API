@@ -18,13 +18,9 @@ var CommentSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  target: {
+  dish: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true
-  },
-  targetType: {
-    type: String,
-    enum: ['dish', 'ingredient', 'recipe'],
+    ref: 'Dish',
     required: true
   }
 });

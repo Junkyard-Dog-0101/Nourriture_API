@@ -7,7 +7,6 @@ var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
 var messageController = require('./controllers/message');
 var ingredientController = require('./controllers/ingredient');
-var recipeController = require('./controllers/recipe');
 var dishController = require('./controllers/dish');
 var problemController = require('./controllers/problem');
 var authController = require('./controllers/auth');
@@ -96,15 +95,6 @@ router.route('/ingredients/:ingredient_id')
 router.route('/ingredients')
   .post(authController.isAuthenticated, adminGroup(), ingredientController.postIngredients)
   .get(ingredientController.getIngredients);
-
-router.route('/recipes/:recipe_id')
-  .get(recipeController.getRecipe)
-  .put(authController.isAuthenticated, recipeController.putRecipe)
-  .delete(authController.isAuthenticated, recipeController.deleteRecipe);
-
-router.route('/recipes')
-  .post(authController.isAuthenticated, recipeController.postRecipes)
-  .get(recipeController.getRecipes);
 
 router.route('/dishes/:dish_id')
   .get(dishController.getDish)

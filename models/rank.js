@@ -11,13 +11,10 @@ var RankSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  target: {
+  dish: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'Dish'
     required: true
-  },
-  targetType: {
-    type: String,
-    enum: ['dish', 'ingredient', 'recipe']
   }
 });
 

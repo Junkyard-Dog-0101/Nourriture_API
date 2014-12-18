@@ -12,13 +12,6 @@ var RestaurantSchema = new mongoose.Schema({
   dishes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Dish'
-  }],
-  friends: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }, {
-    type: String,
-    enum: ['normal', 'block', 'blocked', 'request', 'requested']
   }]
 });
 
