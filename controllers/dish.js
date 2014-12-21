@@ -4,6 +4,7 @@ exports.postDishes = function (req, res) {
     var dish = new Dish();
     dish.name = req.body.name;
     dish.description = req.body.description;
+    dish.picture = req.body.picture;
     dish.user = req.user._id;
     dish.save(function (err) {
         if (err)
@@ -26,7 +27,7 @@ exports.getDish = function (req, res) {
     Dish.find({_id: req.params.dish_id}, function (err, dish) {
         if (err)
             res.status(400).json(err);
-        else if (!dish)
+        else if (!dish[0])
             res.status(404).end();
         else
             res.status(200).json(dish);
@@ -34,10 +35,7 @@ exports.getDish = function (req, res) {
 };
 
 exports.putDish = function (req, res) {
-    Dish.update({_id: req.params.dish_id}, {
-        name: req.body.name,
-        description: req.body.description
-    }, function (err, num, raw) {
+    Dish.update({_id: req.params.dish_id}, {name: req.body.name, description: req.body.description, picture: req.body.picture}, function (err, num, raw) {
         if (err)
             res.status(400).json(err);
         else

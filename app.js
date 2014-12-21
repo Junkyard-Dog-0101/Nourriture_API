@@ -74,7 +74,7 @@ router.route('/users/:user_id')
     .delete(authController.isAuthenticated, adminGroup(), userController.deleteUser);
 
 router.route('/notifications/:notification_id')
-    .put(authController.isAuthenticated, notificationController.putNotification)
+    .put(authController.isAuthenticated, notificationController.putNotification);
 //.delete(authController.isAuthenticated, adminGroup(), notificationController.deleteNotification);
 //.get(notificationController.getNotification)
 

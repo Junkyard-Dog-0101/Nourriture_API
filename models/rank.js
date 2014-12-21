@@ -13,7 +13,7 @@ var RankSchema = new mongoose.Schema({
     },
     dish: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Dish'
+        ref: 'Dish',
         required: true
     }
 });

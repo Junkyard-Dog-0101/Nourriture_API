@@ -4,6 +4,7 @@ exports.postRanks = function (req, res) {
     var rank = new Rank();
     rank.star = req.body.star;
     rank.user = req.user._id;
+    rank.dish = req.body.dish_id;
     rank.save(function (err) {
         if (err)
             res.status(400).json(err);
@@ -13,11 +14,22 @@ exports.postRanks = function (req, res) {
 };
 
 exports.getRanks = function (req, res) {
-    Rank.find({}, function (err, ranks) {
+    Rank.find(function (err, ranks) {
         if (err)
             res.status(400).json(err);
         else
             res.status(200).json(ranks);
+    });
+};
+
+exports.getRankFromDish = function (req, res) {
+    Rank.find({dish: req.body.dish_id}, function (err, rank) {
+        if (err)
+            res.status(400).json(err);
+        else if (!rank[0])
+            res.status(404).end();
+        else
+            res.status(200).json(rank);
     });
 };
 

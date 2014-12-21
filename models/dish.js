@@ -30,7 +30,7 @@ var DishSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Problem'
     }],
-    pictures: [String]
+    picture: String
 });
 
 module.exports = mongoose.model('Dish', DishSchema);
