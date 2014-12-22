@@ -1,10 +1,23 @@
 var Dish = require('../models/dish');
-
+var formidable = require('formidable');
+var util = require('util');
+var Chance = require('chance');
+var fs = require('fs-extra');
 exports.postDishes = function (req, res) {
     var dish = new Dish();
     dish.name = req.body.name;
     dish.description = req.body.description;
-    dish.picture = req.body.picture;
+    if (req.body.picture != undefined) {
+        var my_chance = new Chance();
+        var guid = my_chance.guid();
+        dish.picture = "uploads/" + guid + ".png";//req.body.picture;
+        var base64Data = req.body.picture.replace(/^data:image\/png;base64,/, "");
+
+        fs.writeFile('uploads/' + guid + '.png', base64Data, 'base64', function (err) {
+            //      console.log(err);
+        });
+    }
+    //chance.guid();
     dish.user = req.user._id;
     dish.save(function (err) {
         if (err)
@@ -23,6 +36,15 @@ exports.getDishes = function (req, res) {
     });
 };
 
+/*exports.uploadImage = function (req, res) {
+    var base64Data = req.body.picture.replace(/^data:image\/png;base64,/, "");
+
+    fs.writeFile("uploads/out.png", base64Data, 'base64', function(err)
+    {
+        console.log(err);
+    });
+};*/
+
 exports.getDish = function (req, res) {
     Dish.find({_id: req.params.dish_id}, function (err, dish) {
         if (err)
@@ -35,7 +57,10 @@ exports.getDish = function (req, res) {
 };
 
 exports.putDish = function (req, res) {
-    Dish.update({_id: req.params.dish_id}, {name: req.body.name, description: req.body.description, picture: req.body.picture}, function (err, num, raw) {
+    Dish.update({_id: req.params.dish_id}, {
+        name: req.body.name,
+        description: req.body.description
+    }, function (err, num, raw) {
         if (err)
             res.status(400).json(err);
         else

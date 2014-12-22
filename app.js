@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var qt   = require('quickthumb');
 
 var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
@@ -25,7 +26,7 @@ var adminGroup = function () {
 var port = process.env.PORT || 1337;
 
 var app = express();
-
+app.use(qt.static(__dirname + '/'));
 mongoose.connect('127.0.0.1:27017');
 
 app.use(bodyParser.urlencoded({
@@ -35,6 +36,9 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 
 var router = express.Router();
+
+/*router.route('/uploads')
+    .post(dishController.uploadImage);*/
 
 router.route('/sendFriendRequest')
     .post(authController.isAuthenticated, friendController.sendFriendRequest);

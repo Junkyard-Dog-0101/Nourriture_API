@@ -62,4 +62,4 @@ exports.deleteUser = function (req, res) {
         else
             res.status(204).end();
     });
-}
+};
