@@ -1,4 +1,6 @@
 var User = require('../models/user');
+var Chance = require('chance');
+var fs = require('fs-extra');
 
 exports.postUsers = function (req, res) {
     var user = new User({
@@ -9,12 +11,32 @@ exports.postUsers = function (req, res) {
         gender: req.body.gender,
         email: req.body.email
     });
-    user.save(function (err) {
-        if (err)
-            res.status(400).json(err);
-        else
-            res.status(201).json(user);
-    });
+    if (req.body.picture != undefined) {
+        var my_chance = new Chance();
+        var guid = my_chance.guid();
+        user.picture = "uploads/" + guid + ".png";
+        var base64Data = req.body.picture.replace(/^data:image\/png;base64,/, "");
+        fs.writeFile('uploads/' + guid + '.png', base64Data, 'base64', function (err) {
+            if (err)
+                res.status(400).json(err);
+            else {
+                user.save(function (err) {
+                    if (err)
+                        res.status(400).json(err);
+                    else
+                        res.status(201).json(user);
+                });
+            }
+        });
+    }
+    else {
+        user.save(function (err) {
+            if (err)
+                res.status(400).json(err);
+            else
+                res.status(201).json(user);
+        });
+    }
 };
 
 exports.login = function (req, res) {

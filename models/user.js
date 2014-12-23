@@ -32,14 +32,18 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    status: {
+    picture: {
         type: String,
-        enum: ['online', 'away', 'offline'],
-        default: 'offline'
+        default: null
     },
     phoneNumber: {
         type: String,
         default: null
+    },
+    status: {
+        type: String,
+        enum: ['online', 'away', 'offline'],
+        default: 'offline'
     },
     introduction: {
         type: String,
@@ -54,27 +58,11 @@ var UserSchema = new mongoose.Schema({
         enum: ['normal', 'foodSupplier', 'gastronomist'],
         default: 'normal'
     },
-    picture: {
-        type: String,
-        default: null
-    },
     problems: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Problem'
     }]
 });
-
-/*UserSchema.path('email').validate(function (v, fn) {
- if (v == undefined)
- next(false);
- else
- {
- if (v.indexOf('@') > -1)
- next(true);
- else
- next(false);
- }
- }, 'invalid email format');*/
 
 UserSchema.pre('save', function (callback) {
     var user = this;
@@ -91,7 +79,6 @@ UserSchema.pre('save', function (callback) {
         });
     });
 });
-
 
 UserSchema.methods.toJSON = function () {
     var obj = this.toObject();

@@ -13,6 +13,10 @@ var DishSchema = new mongoose.Schema({
         type: String,
         default: 'No recipe'
     },
+    picture: {
+        type: String,
+        default: null
+    },
     date: {
         type: Date,
         default: Date.now
@@ -29,8 +33,13 @@ var DishSchema = new mongoose.Schema({
     problems: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Problem'
-    }],
-    picture: String
+    }]
 });
+
+DishSchema.methods.toJSON = function () {
+    var obj = this.toObject();
+    delete obj.__v;
+    return obj
+};
 
 module.exports = mongoose.model('Dish', DishSchema);
