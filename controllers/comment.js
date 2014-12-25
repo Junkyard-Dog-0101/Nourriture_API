@@ -40,6 +40,17 @@ exports.getComments = function (req, res) {
     });
 };
 
+exports.getCommentsFromDish = function (req, res) {
+    Comment.find({dish: req.params.dish_id}, function (err, comment) {
+        if (err)
+            res.status(400).json(err);
+        else if (!comment)
+            res.status(404).end();
+        else
+            res.status(200).json(comment);
+    });
+};
+
 exports.getComment = function (req, res) {
     Comment.find({_id: req.params.comment_id}, function (err, comment) {
         if (err)

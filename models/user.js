@@ -34,11 +34,11 @@ var UserSchema = new mongoose.Schema({
     },
     picture: {
         type: String,
-        default: null
+        default: ''
     },
     phoneNumber: {
         type: String,
-        default: null
+        default: ''
     },
     status: {
         type: String,

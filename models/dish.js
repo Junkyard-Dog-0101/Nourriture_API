@@ -15,7 +15,7 @@ var DishSchema = new mongoose.Schema({
     },
     picture: {
         type: String,
-        default: null
+        default: ''
     },
     date: {
         type: Date,

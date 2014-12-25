@@ -37,8 +37,8 @@ app.use(passport.initialize());
 
 var router = express.Router();
 
-/*router.route('/uploads')
-    .post(dishController.uploadImage);*/
+router.route('/getCommentsFromDish/:dish_id')
+    .get(commentController.getCommentsFromDish);
 
 router.route('/sendFriendRequest')
     .post(authController.isAuthenticated, friendController.sendFriendRequest);
