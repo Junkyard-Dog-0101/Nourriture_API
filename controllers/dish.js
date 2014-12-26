@@ -57,7 +57,7 @@ exports.getDish = function (req, res) {
 };
 
 exports.putDish = function (req, res) {
-    Dish.update({_id: req.params.dish_id}, {
+    Dish.update({_id: req.params.dish_id, user: req.user._id}, {
         name: req.body.name,
         description: req.body.description
     }, function (err, num, raw) {
@@ -69,7 +69,7 @@ exports.putDish = function (req, res) {
 };
 
 exports.deleteDish = function (req, res) {
-    Dish.remove({_id: req.params.dish_id}, function (err) {
+    Dish.remove({_id: req.params.dish_id, user: req.user._id}, function (err) {
         if (err)
             res.status(400).json(err);
         else

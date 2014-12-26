@@ -6,6 +6,7 @@ var qt   = require('quickthumb');
 
 var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
+var likeController = require('./controllers/like');
 var messageController = require('./controllers/message');
 var ingredientController = require('./controllers/ingredient');
 var dishController = require('./controllers/dish');
@@ -39,6 +40,9 @@ var router = express.Router();
 
 router.route('/getCommentsFromDish/:dish_id')
     .get(commentController.getCommentsFromDish);
+
+router.route('/getLikesFromDish/:dish_id')
+    .get(likeController.getLikesFromDish);
 
 router.route('/sendFriendRequest')
     .post(authController.isAuthenticated, friendController.sendFriendRequest);
@@ -85,6 +89,15 @@ router.route('/notifications/:notification_id')
 router.route('/notifications')
     .get(notificationController.getNotifications);
 // .post(authController.isAuthenticated, notificationController.postComments)
+
+router.route('/likes/:like_id')
+    .get(likeController.getLike)
+    .delete(authController.isAuthenticated, likeController.deleteLike);
+
+router.route('/likes')
+    .post(authController.isAuthenticated, likeController.postLikes)
+    .get(likeController.getLikes);
+
 
 router.route('/comments/:comment_id')
     .get(commentController.getComment)
