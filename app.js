@@ -31,7 +31,8 @@ app.use(qt.static(__dirname + '/'));
 mongoose.connect('127.0.0.1:27017');
 
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: true,
+    limit: '50mb'
 }));
 
 app.use(passport.initialize());
