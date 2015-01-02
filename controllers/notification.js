@@ -19,7 +19,7 @@ exports.getMyNotifications = function (req, res) {
 };
 
 exports.getMyUnreadNotifications = function (req, res) {
-    Notification.find({user: req.user._id, read: true}, function (err, Notifications) {
+    Notification.find({user: req.user._id, read: false}, function (err, Notifications) {
         if (err)
             res.status(400).json(err);
         else
