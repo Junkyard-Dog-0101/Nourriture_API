@@ -62,6 +62,8 @@ router.route('/getSendedMessage')
     .get(authController.isAuthenticated, messageController.getSendedMessage);
 router.route('/sendMessage')
     .post(authController.isAuthenticated, messageController.sendMessage);
+router.route('/getConversation/:user_id')
+    .get(authController.isAuthenticated, messageController.getConversation);
 
 router.route('/getMyNotifications/')
     .get(authController.isAuthenticated, notificationController.getMyNotifications);

@@ -26,6 +26,21 @@ exports.sendMessage = function (req, res) {
     });
 };
 
+exports.getConversation = function (req, res) {
+    Message.find({
+        $or: [
+            {to: req.user._id, from: req.params.user_id},
+            {from: req.user._id, to: req.params.user_id}
+        ]
+    }, function (err, messages) {
+        if (err)
+            res.status(400).json(err);
+        else
+            res.status(200).json(messages);
+    });
+};
+
+
 exports.getReceivedMessage = function (req, res) {
     Message.find({to: req.user._id}, function (err, messages) {
         if (err)
