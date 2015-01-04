@@ -39,6 +39,9 @@ app.use(passport.initialize());
 
 var router = express.Router();
 
+router.route('/getMyDishes/')
+    .get(authController.isAuthenticated, dishController.getMyDishes);
+
 router.route('/getCommentsFromDish/:dish_id')
     .get(commentController.getCommentsFromDish);
 

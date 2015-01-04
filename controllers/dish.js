@@ -36,6 +36,15 @@ exports.postDishes = function (req, res) {
     }
 };
 
+exports.getMyDishes = function (req, res) {
+    Dish.find({user: req.user._id}, function (err, dishes) {
+        if (err)
+            res.status(400).json(err);
+        else
+            res.status(200).json(dishes);
+    });
+};
+
 exports.getDishes = function (req, res) {
     Dish.find({}, function (err, dishes) {
         if (err)
