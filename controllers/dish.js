@@ -6,6 +6,7 @@ exports.postDishes = function (req, res) {
     var dish = new Dish();
     dish.name = req.body.name;
     dish.description = req.body.description;
+    dish.ingredients = req.body.ingredients;
     if (!(req.body.picture === undefined)) {
         var my_chance = new Chance();
         var guid = my_chance.guid();

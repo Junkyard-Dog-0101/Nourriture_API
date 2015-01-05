@@ -1,10 +1,27 @@
 var mongoose = require('mongoose');
 
 var IngredientSchema = new mongoose.Schema({
-    name: String,
-    description: String,
-    location: String,
-    picture: [String]
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    picture: {
+        type: String,
+        default: ''
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 module.exports = mongoose.model('Ingredient', IngredientSchema);

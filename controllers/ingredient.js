@@ -1,17 +1,39 @@
 var Ingredient = require('../models/ingredient');
+var Chance = require('chance');
+var fs = require('fs-extra');
 
 exports.postIngredients = function (req, res) {
     var ingredient = new Ingredient();
     ingredient.name = req.body.name;
     ingredient.description = req.body.description;
-    ingredient.location = req.body.location;
-    ingredient.picture = req.body.picture;
-    ingredient.save(function (err) {
-        if (err)
-            res.status(400).json(err);
-        else
-            res.status(201).json(ingredient);
-    });
+    if (!(req.body.picture === undefined)) {
+        var my_chance = new Chance();
+        var guid = my_chance.guid();
+        ingredient.picture = "uploads/" + guid + ".png";
+        var base64Data = req.body.picture.replace(/^data:image\/png;base64,/, "");
+        fs.writeFile('uploads/' + guid + '.png', base64Data, 'base64', function (err) {
+            if (err)
+                res.status(400).json(err);
+            else {
+                ingredient.user = req.user._id;
+                ingredient.save(function (err) {
+                    if (err)
+                        res.status(400).json(err);
+                    else
+                        res.status(201).json(ingredient);
+                });
+            }
+        });
+    }
+    else {
+        ingredient.user = req.user._id;
+        ingredient.save(function (err) {
+            if (err)
+                res.status(400).json(err);
+            else
+                res.status(201).json(ingredient);
+        });
+    }
 };
 
 exports.getIngredients = function (req, res) {

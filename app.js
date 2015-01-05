@@ -2,7 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var qt   = require('quickthumb');
+var qt = require('quickthumb');
 
 var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
@@ -120,7 +120,7 @@ router.route('/ingredients/:ingredient_id')
     .delete(authController.isAuthenticated, adminGroup(), ingredientController.deleteIngredient);
 
 router.route('/ingredients')
-    .post(authController.isAuthenticated, adminGroup(), ingredientController.postIngredients)
+    .post(authController.isAuthenticated, ingredientController.postIngredients)
     .get(ingredientController.getIngredients);
 
 router.route('/dishes/:dish_id')
