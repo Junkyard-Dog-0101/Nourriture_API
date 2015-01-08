@@ -1,0 +1,35 @@
+<div >
+	<p>Userinfo</p>
+  	Username:{{username}}<br>
+ 	 ID:{{userid}}
+<hr>
+<p>AddRecipe</p>
+<form name="form" ng-submit="addRecipe()" role="form" >
+<div class="form-group">
+        <label for="recipename">RecipeName</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="recipename" id="recipename" class="form-control " ng-model="recipename" required>
+        <span ng-show="form.recipename.$dirty&&form.recipename.$error.required" class="help-block" >recipename is required</span>
+    
+    </div>
+    <div class="form-group ng-binding">
+        <label for="recipedesp">RecipeDescribtion</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="recipedesp" id="recipedesp" class="form-control" ng-model="recipedesp" required>
+        <span ng-show="form.recipedesp.$dirty&&form.recipedesp.$error.required" class="help-block">recipedescribtion is required</span>
+    
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-danger">Add</button>
+    </div>
+</form>
+<div>
+	Recipe list
+<ul>
+<li ng-repeat="recipe in recipelist" >
+        <a ng-href="#/recipe/{{recipe._id}}">{{recipe.name}}--------{{recipe.description }}-----</a>
+        <span style="float:right;"ng-click="remove('{{recipe._id}}',$index)">delete</span>
+    </li>
+</ul>
+</div>
+</div>

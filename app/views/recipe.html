@@ -1,0 +1,23 @@
+<p>{{detail.name}}</p>
+<p>description:{{detail.description}}</p>
+<p>Author:{{author}}</p>
+<form name="form" ng-submit="modifyRecipe()" role="form">
+<div class="form-group">
+        <label for="recipename">RecipeName</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="recipename" id="recipename" class="form-control " ng-model="detail.name"  required>
+        <span ng-show="form.recipename.$dirty&&form.recipename.$error.required" class="help-block" >recipename is required</span>
+    
+    </div>
+    <div class="form-group ng-binding">
+        <label for="recipedesp">RecipeDescribtion</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="recipedesp" id="recipedesp" class="form-control" ng-model="detail.description" required>
+        <span ng-show="form.recipedesp.$dirty&&form.recipedesp.$error.required" class="help-block">recipedescribtion is required</span>
+    
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-danger">Modify</button>
+    </div>
+    {{message}}
+</form>

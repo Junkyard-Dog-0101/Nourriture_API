@@ -1,5 +1,5 @@
 {
-  "name": "Nourriture_API",
+  "name": "api-nourriture",
   "main": "app.js",
   "dependencies": {
     "express": "4.10.6",
