@@ -9,10 +9,10 @@
  */
 angular.module('webNourritureApp')
   .controller('IndexCtrl', function ($window,$scope) {
-  	if ($window.sessionStorage['username']) {
+  /*	if ($window.sessionStorage['username']) {
   		$scope.user=$window.sessionStorage['username'];
   	}else{
   		$scope.user='Login';
-  	};
+  	};*/
     
   });

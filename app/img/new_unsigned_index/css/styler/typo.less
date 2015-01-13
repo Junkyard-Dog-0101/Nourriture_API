@@ -1,0 +1,65 @@
+body {
+	background-color: @body-bg;
+	color: @text-color;
+	font-family: @font-family-base;
+	font-size: 	 @font-size-base;
+    line-height: 26px;
+}
+
+h1 { 
+    font-family: @headings-font-family;
+	font-size: @font-size-h1;
+    letter-spacing: -1px;
+}
+h2 { 
+    font-family: @headings-font-family;
+	font-size: @font-size-h2;
+    letter-spacing: -1px;
+}
+h3 { 
+    font-family: @headings-font-family;
+	font-size: @font-size-h3;
+    letter-spacing: -1px;
+}
+h4 { 
+    font-family: @headings-font-family;
+	font-size: @font-size-h4;
+    letter-spacing: -1px;
+}
+h5 { 
+    font-family: @headings-font-family;
+	font-size: @font-size-h5;
+    letter-spacing: -1px;
+}
+h6 { 
+    font-family: @headings-font-family;
+	font-size: @font-size-h6;
+    letter-spacing: -1px;
+}
+
+.heading-alt {
+	font-family: @font-family-sans-serif;
+	font-weight: 700;
+}
+
+.sub-header {
+    border-bottom: dotted 1px @gray-lighter;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.muted {
+	color: @gray-light;
+}
+
+
+a {
+	color: @link-color;
+	&:hover {
+		color: @link-color-hover;
+        text-decoration: none;
+	}
+	&:visited {
+		color: @link-color-visited;
+	}
+}

@@ -1,0 +1,203 @@
+@import "../variables.less";
+
+// Color scheme
+// -------------------------
+@first-color:             #ccd7dd;
+@second-color:            #abb5ba;
+@link-color:              darken(@first-color, 30%);
+@link-color-hover:        darken(@link-color, 15%);
+@link-color-visited:      @link-color;
+
+body {
+    background-color: darken(@first-color, 50%);
+}
+
+a {
+    color: @link-color;
+    &:hover {
+        color: @link-color-hover;
+    }
+    &:visited {
+        color: @link-color-visited;
+    }
+}
+
+.nav-pills {
+    > li {
+        &.active {
+            > a {
+                background-color: darken(@first-color, 10%);
+                &:hover {
+                    background-color: @first-color;
+                }
+
+                &:focus {
+                    background-color: @first-color;
+                }
+            }
+        }
+    }
+}
+
+#middle {
+    #content {
+        &.signin-page {
+            .panel {
+                .panel-heading {
+                    background-color: @first-color;
+                }
+            }
+        }
+    }
+}
+
+#sidebar {
+    // override
+    .panel {
+        border: 0;
+
+        &.panel-outline {
+            color: #fff;
+        }
+    }
+
+    .statistic-list-chart {
+        li {
+            color: #fff;
+            h4 {
+                color: #fff;
+            }
+            .sub {
+                color: @gray-lighter;
+            }
+        }
+    }
+
+    .nav-stacked {
+        > li {
+            > a {
+                > .icon-cover {
+                    &::after {
+                        background-color: @first-color;
+                    }
+                }
+
+                &:hover {
+                    background-color: lighten(@first-color, 25%);
+                }
+            }
+
+            &.active {
+                > a {
+                    background-color: darken(@first-color, 5%);
+                    > .icon-cover {
+                        &::after {
+                            background-color: darken(@first-color, 15%);
+                        }
+                    }
+
+                    &:hover {
+                        background-color: darken(@first-color, 8%);
+                    }
+                }
+            }
+
+            > ul {
+                background-color: lighten(@first-color, 27%);
+                > li {
+                    > a {
+                        &:hover {
+                            background-color: lighten(@first-color, 15%);
+                        }
+                    }
+
+                    &.active {
+                        > a {
+                            background-color: lighten(@first-color, 10%);
+                            &:hover {
+                                background-color: lighten(@first-color, 15%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#mainnav {
+    background-color: darken(@first-color, 30%);
+
+    #top-nav {
+        .nav {
+            > li {
+                > a {
+                    &:hover {
+                        background-color: darken(@first-color, 20%);
+                    }
+                }
+
+                &.active {
+                    > a {
+                        background-color: darken(@first-color, 10%);
+                    }
+                }
+            }
+
+            .open {
+                > a {
+                    background-color: darken(@first-color, 10%);
+                    &:hover {
+                        background-color: darken(@first-color, 10%);
+                    }
+
+                    &:focus {
+                        background-color: darken(@first-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+
+    .navbar-form {
+        .form-control {
+            &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+               color: lighten(@first-color, 20%);
+            }
+        }
+    }
+}
+
+#footer {
+    .list-inline {
+        li {
+            a {
+                color: @first-color;
+            }
+        }
+    }
+}
+
+.message {
+    .message-detail {
+        .bubble {
+            &.alt {
+                border-color: darken(@first-color, 15%);
+                
+                &:before {
+                    border-right-color: darken(@first-color, 15%);
+                }    
+            }
+        }
+    }
+}
+
+.list-user-app {
+    li {
+        a {
+            &:hover {
+                background-color: @first-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,150 @@
+// Global values
+// --------------------------------------------------
+
+// Grays
+// -------------------------
+
+@gray-darker:             lighten(#000, 13.5%); // #222
+@gray-dark:               lighten(#000, 20%);   // #333
+@gray:                    lighten(#000, 33.5%); // #555
+@gray-light:              lighten(#000, 60%);   // #999
+@gray-lighter:            lighten(#000, 93.5%); // #eee
+
+
+// Brand colors
+// -------------------------
+
+@brand-default:			  #d1dade;
+@brand-primary:           #10a6de;
+@brand-success:           #56c32a;
+@brand-warning:           #fbb05e;
+@brand-danger:            #f35958;
+@brand-info:              #30d2cc;
+@brand-inverse:			  #152639;
+@brand-link:			  transparent;
+
+
+// Color scheme
+// -------------------------
+@first-color:			  #6acaf3;
+@second-color: 		      #64c4dc;
+
+
+// Other brand color
+// -------------------------
+@brand-facebook:		  #3b5998;
+@brand-twitter:			  #3a92c8;
+@brand-gplus:			  #d6492f;
+@brand-github:			  #3b3b3b;
+@brand-linkedin:          #0ea4bd;
+
+
+// Scaffolding
+// -------------------------
+
+@body-bg:                 #fff;
+@text-color:              @gray-dark;
+
+// Links
+// -------------------------
+
+@link-color:              darken(@first-color, 30%);
+@link-color-hover:        darken(@link-color, 15%);
+@link-color-visited:      @link-color;
+
+// Typography
+// -------------------------
+
+@font-family-sans-serif:  'Open Sans', 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@font-family-serif:       'Droid Serif', Georgia, 'Times New Roman', serif;
+@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          1.4em;
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
+
+@font-size-h1:            2em;
+@font-size-h2:            1.7em;
+@font-size-h3:            1.5em;
+@font-size-h4:            1.2em;
+@font-size-h5:            1em;
+@font-size-h6:            0.8em;
+
+@line-height-base:        1.8; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+
+@headings-font-family:    @font-family-sans-serif;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+// Buttons
+// -------------------------
+
+@btn-font-weight:                        normal;
+
+@btn-default-color:                      #888;
+@btn-default-bg:                         @brand-default;
+@btn-default-bg-hover:                   lighten(@btn-default-bg, 8%);
+@btn-default-border-color:		         darken(@btn-default-bg, 7%);
+@btn-default-border-color-hover:		 lighten(@btn-default-border-color, 5%);
+
+@btn-primary-color:                      #fff;
+@btn-primary-bg:                         @brand-primary;
+@btn-primary-bg-hover:                   lighten(@btn-primary-bg, 8%);
+@btn-primary-border-color:		         darken(@btn-primary-bg, 7%);
+@btn-primary-border-color-hover:		 lighten(@btn-primary-border-color, 10%);
+
+@btn-success-color:                      @btn-primary-color;
+@btn-success-bg:                         @brand-success;
+@btn-success-bg-hover:                   lighten(@btn-success-bg, 8%);
+@btn-success-border-color:		         darken(@btn-success-bg, 7%);
+@btn-success-border-color-hover:		 lighten(@btn-success-border-color, 10%);
+
+@btn-warning-color:                      @btn-primary-color;
+@btn-warning-bg:                         @brand-warning;
+@btn-warning-bg-hover:                   lighten(@btn-warning-bg, 8%);
+@btn-warning-border-color:		         darken(@btn-warning-bg, 7%);
+@btn-warning-border-color-hover:		 lighten(@btn-warning-border-color, 10%);
+
+@btn-danger-color:                       @btn-primary-color;
+@btn-danger-bg:                          @brand-danger;
+@btn-danger-bg-hover:                    lighten(@btn-danger-bg, 8%);
+@btn-danger-border-color:		         darken(@btn-danger-bg, 7%);
+@btn-danger-border-color-hover:		     lighten(@btn-danger-border-color, 10%);
+
+@btn-info-color:                         @btn-primary-color;
+@btn-info-bg:                            @brand-info;
+@btn-info-bg-hover:                      lighten(@btn-info-bg, 8%);
+@btn-info-border-color:		 	         darken(@btn-info-bg, 7%);
+@btn-info-border-color-hover:		 	 lighten(@btn-info-border-color, 10%);
+
+@btn-inverse-color:                      @btn-primary-color;
+@btn-inverse-bg:                         @brand-inverse;
+@btn-inverse-bg-hover:                   lighten(@btn-inverse-bg, 8%);
+@btn-inverse-border-color:		         darken(@btn-inverse-bg, 7%);
+@btn-inverse-border-color-hover:		 lighten(@btn-inverse-border-color, 10%);
+
+@btn-link-color:                         @brand-primary;
+@btn-link-bg:                            @brand-link;
+@btn-link-bg-hover:                      @brand-link;
+@btn-link-border-color:		             transparent;
+@btn-link-border-color-hover:		     lighten(@brand-primary, 10%);
+
+@btn-disabled-color:                     @gray-light;
+@btn-disabled-bg:                        lighten(@brand-default, 10%);
+@btn-disabled-bg-hover:                  lighten(@btn-disabled-bg, 8%);
+@btn-disabled-border-color:		         darken(@btn-disabled-bg, 7%);
+@btn-disabled-border-color-hover:		 lighten(@btn-disabled-bg, 10%);
+
+@btn-link-disabled-color:        		 @gray-light;
+
+
+// Forms
+// -------------------------
+
+@input-background-color:		#fff;
+@input-border-width:			1px;
+@input-border-color:			#ccc;

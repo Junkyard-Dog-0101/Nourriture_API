@@ -1,0 +1,83 @@
+.error-page {
+    color: #fff;
+    padding-top: 50px;
+}
+
+.error-page .code {
+    /*color: rgba(255, 255, 255, 0.3);*/
+    display: block;
+    font-size: 18em;
+    font-weight: 700;
+    height: 300px;
+    letter-spacing: -3px;
+    line-height: 100%;
+    margin-bottom: 25px;
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    width: 100%;
+
+    -webkit-animation: codefade 2s alternate, infinite-spinning 1s normal ease-in-out; /* Safari 4+ */
+    -moz-animation:    codefade 2s alternate, infinite-spinning 1s normal ease-in-out; /* Fx 5+ */
+    -o-animation:      codefade 2s alternate, infinite-spinning 1s normal ease-in-out; /* Opera 12+ */
+    animation:         codefade 2s alternate, infinite-spinning 1s normal ease-in-out; /* IE 10+ */
+}
+
+.error-page .sub {
+    display: block;
+    font-size: 1.2em;
+    margin-top: 250px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.error-page .well {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 0;
+}
+
+.error-page .back {
+    color: #56c32a;
+    text-decoration: none;
+}
+
+.error-page .back:hover {
+    color: #56c32a;
+}
+
+.error-page .form-group {
+    margin-bottom: 0;
+}
+
+.error-page .form-group .form-control {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+@-webkit-keyframes codefade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-moz-keyframes codefade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-o-keyframes codefade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes codefade {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes infinite-spinning {
+    from {
+        /*transform: rotate(0deg);*/
+        font-size: 5em;
+    }
+    to {
+        /*transform: rotate(360deg);*/
+        font-size: 18em;
+    }
+}

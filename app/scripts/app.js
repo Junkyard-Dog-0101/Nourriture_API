@@ -41,6 +41,58 @@ angular
         templateUrl: 'views/dish.html',
         controller: 'DishCtrl'
       })
+      .when('/p-dishes', {
+        templateUrl: 'views/p-dishes.html',
+        controller: 'PDishesCtrl'
+      })
+      .when('/p-personal-info', {
+        templateUrl: 'views/p-personal-info.html',
+        controller: 'PPersonalInfoCtrl'
+      })
+      .when('/p-change-pwd', {
+        templateUrl: 'views/p-change-pwd.html',
+        controller: 'PChangePwdCtrl'
+      })
+      .when('/dishes', {
+        templateUrl: 'views/dishes.html',
+        controller: 'DishesCtrl'
+      })
+      .when('/alldishes', {
+        templateUrl: 'views/alldishes.html',
+        controller: 'AlldishesCtrl'
+      })
+      .when('/p-dishes', {
+        templateUrl: 'views/p-dishes.html',
+        controller: 'PDishesCtrl'
+      })
+      .when('/dishes', {
+        templateUrl: 'views/dishes.html',
+        controller: 'DishesCtrl'
+      })
+      .when('/p-my-dishes', {
+        templateUrl: 'views/p-my-dishes.html',
+        controller: 'PMyDishesCtrl'
+      })
+      .when('/p-notifications', {
+        templateUrl: 'views/p-notifications.html',
+        controller: 'PNotificationsCtrl'
+      })
+      .when('/p-notification-new', {
+        templateUrl: 'views/p-notification-new.html',
+        controller: 'PNotificationNewCtrl'
+      })
+      .when('/p-notification-send', {
+        templateUrl: 'views/p-notification-send.html',
+        controller: 'PNotificationSendCtrl'
+      })
+      .when('/p-notification-out', {
+        templateUrl: 'views/p-notification-out.html',
+        controller: 'PNotificationOutCtrl'
+      })
+      .when('/p-signin', {
+        templateUrl: 'views/p-signin.html',
+        controller: 'PSigninCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -55,8 +107,8 @@ angular
   
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
-            if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-                $location.path('/login');
-            }
+            /*if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+                $location.path('/index');
+            }*/
         });
     }]);

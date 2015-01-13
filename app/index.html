@@ -9,11 +9,33 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- Font Awesome CSS -->
+        <link href="fonts/font-awesome/css/font-awesome.min.css?v=4.0.3" rel="stylesheet">
+                <!-- IcoMoon CSS -->
+        <link href="fonts/icomoon/style.css?v=1.0" rel="stylesheet">
+                <!-- Bootstrap Switch -->
+        <link href="css/libs/bootstrap-switch.min.css?v=3.0.0" rel="stylesheet">
+
+        <!-- Bootstrap Select -->
+        <link href="css/libs/bootstrap-select.min.css" rel="stylesheet">
+                <!-- Summernote -->
+        <link href="css/libs/summernote.css" rel="stylesheet">
+        <link href="css/libs/summernote-bs3.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/styler/style.css" rel="stylesheet" type="text/css">
+        
+                <link href="css/styler/style_new.css" rel="stylesheet" type="text/css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    
+    <style type="text/css">
+    #ng-view{
+		margin-top:80px;    
+    }
+    </style>
   </head>
   <body ng-app="webNourritureApp">
     <!--[if lt IE 7]>
@@ -22,16 +44,41 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header" ng-controller='IndexCtrl'>
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#/login" ng-bind='user'>Login</a></li>
-        </ul>
-        <h3 class="text-muted">Nourriture</h3>
-      </div>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hidden-sm" href="/">Nourriture</a>
+                </div>
+                <div class="navbar-collapse collapse" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/#/">Home</a></li>
+                        <li><a href="/#/p-dishes">Dishes</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#/p-notifications"><i class="imoon imoon-envelope fa-fw"></i><span class="pull-right badge badge-danger">4</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="text">Max</span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="/#/p-my-dishes">My Dishes</a></li>
+                                <li><a href="/#/p-personal-info">Personal Info</a></li>
+                                <li><a href="/#/p-change-pwd">Challenge Password</a></li>
+                                <li><a href="/#/p-signin">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <div ng-view=""></div>
+      <div id="ng-view" ng-view=""></div>
 
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from the Bravo Team 10</p>
@@ -84,6 +131,17 @@
         <script src="scripts/controllers/services.js"></script>
         <script src="scripts/controllers/index.js"></script>
         <script src="scripts/controllers/dish.js"></script>
+        <script src="scripts/controllers/p-dishes.js"></script>
+        <script src="scripts/controllers/p-personal-info.js"></script>
+        <script src="scripts/controllers/p-change-pwd.js"></script>
+        <script src="scripts/controllers/dishes.js"></script>
+        <script src="scripts/controllers/alldishes.js"></script>
+        <script src="scripts/controllers/p-my-dishes.js"></script>
+        <script src="scripts/controllers/p-notifications.js"></script>
+        <script src="scripts/controllers/p-notification-new.js"></script>
+        <script src="scripts/controllers/p-notification-send.js"></script>
+        <script src="scripts/controllers/p-notification-out.js"></script>
+        <script src="scripts/controllers/p-signin.js"></script>
         <!-- endbuild -->
 </body>
 </html>

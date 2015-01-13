@@ -1,0 +1,138 @@
+.btn {
+    .transition;
+    .border-radius(2px);
+    &:hover {
+        .transition;
+    }
+
+    &.btn-lg {
+        padding-bottom: 11px;
+    }
+
+    &.btn-primary {
+        background-color: @brand-primary;
+        border-color: @brand-primary;
+        &:hover {
+            background-color: darken(@brand-primary, 10%);
+            border-color: darken(@brand-primary, 20%);
+        }
+    }
+
+    &.btn-info {
+        background-color: @brand-info;
+        border-color: @brand-info;
+        &:hover {
+            background-color: darken(@brand-info, 7%);
+            border-color: darken(@brand-info, 10%);
+        }
+    }
+
+    &.btn-success {
+        background-color: @brand-success;
+        border-color: @brand-success;
+        &:hover {
+            background-color: darken(@brand-success, 10%);
+            border-color: darken(@brand-success, 20%);
+        }
+    }
+
+    &.btn-warning {
+        background-color: @brand-warning;
+        border-color: @brand-warning;
+        &:hover {
+            background-color: darken(@brand-warning, 10%);
+            border-color: darken(@brand-warning, 20%);
+        }
+    }
+
+    &.btn-danger {
+        background-color: @brand-danger;
+        border-color: @brand-danger;
+        &:hover {
+            background-color: darken(@brand-danger, 10%);
+            border-color: darken(@brand-danger, 20%);
+        }
+    }
+
+    &.btn-inverse {
+        background-color: @brand-inverse;
+        border-color: @brand-inverse;
+        color: @brand-default;
+        &:hover {
+            background-color: lighten(@brand-inverse, 15%);
+            border-color: darken(@brand-inverse, 20%);
+        }
+    }
+
+    &.btn-alt {
+        &.btn-default, &.btn-primary, &.btn-info, &.btn-success, &.btn-warning, &.btn-danger, &.btn-inverse {
+            border-left-width: 5px;
+        }
+
+        &.btn-primary, &.btn-info, &.btn-success, &.btn-warning, &.btn-danger, &.btn-inverse {
+            background-color: #fff;
+        }
+
+        &.btn-primary {
+            color: @brand-primary;
+            &:hover, &:active {
+                background-color: #fff;
+                color: ;
+            }
+        }
+
+        &.btn-success {
+            color: @brand-success;
+            &:hover, &:active {
+                background-color: #fff;
+                color: ;
+            }
+        }
+
+        &.btn-info {
+            color: @brand-info;
+            &:hover, &:active {
+                background-color: #fff;
+                color: ;
+            }
+        }
+
+        &.btn-warning {
+            color: @brand-warning;
+            &:hover, &:active {
+                background-color: #fff;
+                color: ;
+            }
+        }
+
+        &.btn-danger {
+            color: @brand-danger;
+            &:hover, &:active {
+                background-color: #fff;
+                color: ;
+            }
+        }
+
+        &.btn-inverse {
+            color: @brand-inverse;
+            &:hover, &:active {
+                background-color: #fff;
+                color: ;
+            }
+        }
+    }
+}
+
+.btn-demo-space {
+    margin-bottom: 10px;
+}
+
+
+
+a.btn {
+    &.btn-primary, &.btn-info, &.btn-success, &.btn-warning, &.btn-danger {
+        &:visited {
+            color: #fff;
+        }
+    }
+}

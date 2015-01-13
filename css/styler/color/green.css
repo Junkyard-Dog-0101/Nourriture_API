@@ -1,0 +1,102 @@
+body {
+  background-color: #020d09;
+}
+a {
+  color: #0f6646;
+}
+a:hover {
+  color: #052318;
+}
+a:visited {
+  color: #0f6646;
+}
+.nav-pills > li.active > a {
+  background-color: #1bc083;
+}
+.nav-pills > li.active > a:hover {
+  background-color: #2de19f;
+}
+.nav-pills > li.active > a:focus {
+  background-color: #2de19f;
+}
+#middle #content.signin-page .panel .panel-heading {
+  background-color: #2de19f;
+}
+#sidebar .panel {
+  border: 0;
+}
+#sidebar .panel.panel-outline {
+  color: #fff;
+}
+#sidebar .statistic-list-chart li {
+  color: #fff;
+}
+#sidebar .statistic-list-chart li h4 {
+  color: #fff;
+}
+#sidebar .statistic-list-chart li .sub {
+  color: #eeeeee;
+}
+#sidebar .nav-stacked > li > a > .icon-cover::after {
+  background-color: #2de19f;
+}
+#sidebar .nav-stacked > li > a:hover {
+  background-color: #9df1d2;
+}
+#sidebar .nav-stacked > li.active > a {
+  background-color: #1fd693;
+}
+#sidebar .nav-stacked > li.active > a > .icon-cover::after {
+  background-color: #18a974;
+}
+#sidebar .nav-stacked > li.active > a:hover {
+  background-color: #1dc98a;
+}
+#sidebar .nav-stacked > li > ul {
+  background-color: #a5f2d6;
+}
+#sidebar .nav-stacked > li > ul > li > a:hover {
+  background-color: #70ebbe;
+}
+#sidebar .nav-stacked > li > ul > li.active > a {
+  background-color: #5ae7b3;
+}
+#sidebar .nav-stacked > li > ul > li.active > a:hover {
+  background-color: #70ebbe;
+}
+#mainnav {
+  background-color: #0f6646;
+}
+#mainnav #top-nav .nav > li > a:hover {
+  background-color: #159365;
+}
+#mainnav #top-nav .nav > li.active > a {
+  background-color: #1bc083;
+}
+#mainnav #top-nav .nav .open > a {
+  background-color: #1bc083;
+}
+#mainnav #top-nav .nav .open > a:hover {
+  background-color: #1bc083;
+}
+#mainnav #top-nav .nav .open > a:focus {
+  background-color: #1bc083;
+}
+#mainnav .navbar-form .form-control::-webkit-input-placeholder,
+#mainnav .navbar-form .form-control:-moz-placeholder,
+#mainnav .navbar-form .form-control::-moz-placeholder,
+#mainnav .navbar-form .form-control:-ms-input-placeholder {
+  color: #86eec8;
+}
+#footer .list-inline li a {
+  color: #2de19f;
+}
+.message .message-detail .bubble.alt {
+  border-color: #18a974;
+}
+.message .message-detail .bubble.alt:before {
+  border-right-color: #18a974;
+}
+.list-user-app li a:hover {
+  background-color: #2de19f;
+}
