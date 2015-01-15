@@ -104,6 +104,7 @@ angular
       .when('/p-friends', {
         templateUrl: 'views/p-friends.html',
         controller: 'PFriendsCtrl'
+	})
       .when('/p-add-dishes', {
         templateUrl: 'views/p-add-dishes.html',
         controller: 'PAddDishesCtrl'
