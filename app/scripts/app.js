@@ -93,6 +93,14 @@ angular
         templateUrl: 'views/p-signin.html',
         controller: 'PSigninCtrl'
       })
+      .when('/friends', {
+        templateUrl: 'views/friends.html',
+        controller: 'FriendsCtrl'
+      })
+      .when('/p-friends', {
+        templateUrl: 'views/p-friends.html',
+        controller: 'PFriendsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
