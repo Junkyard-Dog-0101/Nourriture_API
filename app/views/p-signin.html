@@ -14,28 +14,30 @@
                                             
                                         </div>
                                         <div class="panel-body col-md-6">
-                                            <form method="post" id="defaultForm" class="form-horizontal">
+                                            <form ng-submit="login()" role="form" id="defaultForm" class="form-horizontal">
                                                 <div class="form-group">
                                                     <div class="col-xs-12">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                                            <input type="email" id="login-email" name="loginEmail" class="form-control input-lg" placeholder="请输入邮箱地址">
+                                                            <input type="text" id="login-email" name="username" class="form-control input-lg"  ng-model="username" requiredplaceholder="请输入邮箱地址">
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {{username}}
                                                 <div class="form-group">
                                                     <div class="col-xs-12">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                                            <input type="password" id="login-password" name="loginPassword" class="form-control input-lg" placeholder="请输入密码">
+                                                            <input type="password" id="login-password" name="password" class="form-control input-lg"  ng-model="password" placeholder="请输入密码">
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {{password}}
                                                 <div class="col-xs-12">
                                                     <p class="align-right"><a href="oxcoder_unsigned_forgetp.html" style="color:#c0c0c0;"><small>忘记密码？</small></a></p>
                                                     <span class="help-block" id="hint1" style="margin-left:20px;" />
                                                     <span class="help-block has-error" id="hint2" style="">
-                                                        <small class="help-block">用户名或密码错误</small>
+                                                        <small class="help-block">{{message}}</small>
                                                     </span>
                                                 </div>    
                                                 <div class="col-xs-12">

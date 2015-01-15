@@ -37,14 +37,14 @@
     }
     </style>
   </head>
-  <body ng-app="webNourritureApp">
+  <body ng-app="webNourritureApp" ng-cloak>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="container">
-        <div class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderController">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -60,17 +60,17 @@
                         <li><a href="/#/">Home</a></li>
                         <li><a href="/#/p-dishes">Dishes</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul  ng-show="isLogIn" class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#/p-notifications"><i class="imoon imoon-envelope fa-fw"></i><span class="pull-right badge badge-danger">4</span></a>
+                            <a ng-href="#/p-notifications?id={{userid}}"><i class="imoon imoon-envelope fa-fw"></i><span class="pull-right badge badge-danger">4</span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="text">Max</span> <b class="caret"></b></a>
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="text">{{username}}</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                            <li><a href="/#/p-my-dishes">My Dishes</a></li>
-                                <li><a href="/#/p-personal-info">Personal Info</a></li>
-                                <li><a href="/#/p-change-pwd">Challenge Password</a></li>
-                                <li><a href="/#/p-signin">Logout</a></li>
+                            <li><a ng-href="/#/p-my-dishes?id={{userid}}">My Dishes</a></li>
+                                <li><a ng-href="/#/p-personal-info?id={{userid}}">Personal Info</a></li>
+                                <li><a ng-href="/#/p-change-pwd?id={{userid}}">Challenge Password</a></li>
+                                <li><a ng-click="logout()">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -142,6 +142,8 @@
         <script src="scripts/controllers/p-notification-send.js"></script>
         <script src="scripts/controllers/p-notification-out.js"></script>
         <script src="scripts/controllers/p-signin.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/p-add-dishes.js"></script>
         <!-- endbuild -->
 </body>
 </html>
