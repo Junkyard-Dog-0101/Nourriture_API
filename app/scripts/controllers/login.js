@@ -23,21 +23,4 @@ angular.module('webNourritureApp')
                 }
             });
         };
-
-          $scope.register=function  () {
-            $http({
-                method: 'POST',
-                url: 'api/register',
-                data:  "username="+$scope.username+"&password="+$scope.password,
-                headers:{
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).success(function  (data,status,headers,config) {
-                $scope.message='register success';
-            })
-            .error(function (data, status, headers, config) {
-                $scope.message='register error';
-            });
-        };
-
     }]);

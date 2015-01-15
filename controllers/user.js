@@ -69,7 +69,14 @@ exports.getUser = function (req, res) {
 };
 
 exports.putUser = function (req, res) {
-    Comment.update({_id: req.user._id}, {password: req.body.password}, function (err, num, raw) {
+    User.update({_id: req.params.user_id}, 
+    {
+        username: req.body.username,
+        firstName: req.body.first_name,
+        lastName: req.body.last_name,
+        gender: req.body.gender,
+        email: req.body.email
+    }, function (err, num, raw) {
         if (err)
             res.status(400).json(err);
         else
@@ -78,7 +85,7 @@ exports.putUser = function (req, res) {
 };
 
 exports.deleteUser = function (req, res) {
-    Comment.remove({_id: req.params.user_id}, function (err) {
+    User.remove({_id: req.params.user_id}, function (err) {
         if (err)
             res.status(400).json(err);
         else
