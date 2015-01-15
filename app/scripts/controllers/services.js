@@ -1,48 +1,29 @@
 'use strict';
   
 angular.module('Authentication')
-  
 .factory('AuthenticationService',
-    ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-    function (Base64, $http, $cookieStore, $rootScope, $timeout) {
-        var service = {};
- 
-        service.Login = function (username, password, callback) {
- 
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-            // $timeout(function(){
-            //     var response = { success: username === 'test' && password === 'test' };
-            //     if(!response.success) {
-            //         response.message = 'Username or password is incorrect';
-            //     }
-            //     callback(response);
-            // }, 1000);
- 
- 
-            /* Use this for real authentication
-             ----------------------------------------------*/
-                 var authdata = Base64.encode(username + ':' + password);
-                $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; 
-                $http({
-                    method:'GET',
-                    url:'/api/login?username='+username
-                })
-                .success(function (response) {
-                    callback(response);
-                });
-             }
-  
+   ['Base64', '$cookieStore', '$http', "$log", "$cookies","$rootScope",  function (Base64, $cookieStore, $http, $log, $cookies,$rootScope)  {
+        var service={};
+        service.Login=function  (username,password,callback) {
+                    var authdata = Base64.encode(username + ':' + password);
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; 
+                    $http({
+                        method:'POST',
+                        url:'/api/login'
+                    })
+                    .success(function (response) {
+                        callback(response);
+                    })
+                };
+
         service.SetCredentials = function (username, password) {
-            var authdata = Base64.encode(username + ':' + password);
-  
+            var authdata = Base64.encode(username + ':' + password);  
             $rootScope.globals = {
                 currentUser: {
                     username: username,
                     authdata: authdata
                 }
-            };
-  
+            };  
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
             $cookieStore.put('globals', $rootScope.globals);
         };
@@ -52,10 +33,9 @@ angular.module('Authentication')
             $cookieStore.remove('globals');
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
-  
+
         return service;
-    }])
-  
+}])  
 .factory('Base64', function () {
     /* jshint ignore:start */
   

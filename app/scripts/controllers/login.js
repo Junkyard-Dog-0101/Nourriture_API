@@ -1,6 +1,6 @@
 'use strict';
   
-angular.module('Authentication')
+angular.module('webNourritureApp')
   
 .controller('LoginController',
     ['$scope', '$rootScope', '$location','$http','$window','AuthenticationService',
@@ -17,6 +17,7 @@ angular.module('Authentication')
                     $window.sessionStorage['userid']=response[0]._id;
                     $window.sessionStorage['username']=response[0].username;
                     $location.path('/');
+                    $window.location.reload();
                 } else {
                     $scope.error = response.message;
                 }
