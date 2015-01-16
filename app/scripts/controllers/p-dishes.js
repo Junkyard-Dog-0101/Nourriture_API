@@ -9,19 +9,23 @@
  */
 angular.module('webNourritureApp')
   .controller('PDishesCtrl', function ($scope,$http,$window) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    //获取dish
-      $http.get('api/getMyDishes').success(function  (data) {
-     $scope.recipelist=data;
-  });
-/*$scope.detail=function  (id,index) {
-  $scope.recipelist.splice(index,1);
-    $http.delete('api/recipes/'+id).success(function  (status) {        
-    });
-  };*/
+    //get my dishes
+    //add dish
+    $scope.userid=$window.sessionStorage['userid'];
+        $scope.addDish=function  () {
+          $http({
+            method: 'POST',
+            url:'api/dishes',
+            data:"name="+$scope.dishName+
+            "&description="+$scope.description,
+            headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'user._id':$scope.user
+                }
+          }).success(function  (data) {
+              $scope.dishes=data[0];
+          }).error();
+        }
+    
   });
 

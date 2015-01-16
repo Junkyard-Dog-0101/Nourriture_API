@@ -4,7 +4,7 @@
 <div class="panel panel-default">
                                                                        <div class="panel-body">
                                             
-                                            <form class="form-horizontal ng-pristine ng-valid" id="defaultForm">
+                                            <form class="form-horizontal ng-pristine ng-valid" ng-submit="addDish()" id="defaultForm">
 
 
                                                 <div class="form-group">
@@ -25,20 +25,20 @@
                                                 <div class="form-group">
                                                     <label for="subject" class="col-sm-2 control-label">Name</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="subject" class="form-control" id="subject" placeholder="请输入标题">
+                                                        <input type="text" name="name" class="form-control" id="subject"  ng-model="dishName" placeholder="请输入标题">
                                                         <span class="help-block" id="hint1"></span>
                                                     </div>
                                                 </div><!-- /.form-group -->
-                                                
+                                                {{dishName}}
 
                                                 <div class="form-group">
                                                     <label for="message" class="col-sm-2 control-label">Description</label>
                                                     <div class="col-sm-10">
-                                                        <textarea name="content" class="form-control" rows="" id="message" placeholder="Description"></textarea>
+                                                        <textarea name="description" class="form-control" rows="" id="message"  ng-model="description" placeholder="Description"></textarea>
                                                         <span class="help-block" id="hint2"></span>
                                                     </div>
                                                 </div><!-- /.form-group -->
-                                                
+                                                {{description}}
 
                                                 <div class="form-group">
                                                     <div class="col-sm-10 col-sm-offset-2">
@@ -47,7 +47,7 @@
                                                 </div><!-- /.form-group -->
                                                 
                                             </form>
-
+{{dishes}}
                                         </div><!-- /.panel-body -->
                                     </div>
                 </div><br/>
