@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 var router = express.Router();
 
 router.route('/getMyDishes/')
-    .get(dishController.getMyDishes);
+    .get(authController.isAuthenticated, dishController.getMyDishes);
 
 router.route('/getCommentsFromDish/:dish_id')
     .get(commentController.getCommentsFromDish);
@@ -52,31 +52,31 @@ router.route('/getLikesFromDish/:dish_id')
     .get(likeController.getLikesFromDish);
 
 router.route('/sendFriendRequest')
-    .post(friendController.sendFriendRequest);
+    .post(authController.isAuthenticated, friendController.sendFriendRequest);
 router.route('/validateFriendRequest')
-    .put(friendController.validateFriendRequest);
+    .put(authController.isAuthenticated, friendController.validateFriendRequest);
 router.route('/getMyFriend')
-    .get(friendController.getMyFriend);
+    .get(authController.isAuthenticated, friendController.getMyFriend);
 router.route('/getMyFriendRequest')
-    .get(friendController.getMyFriendRequest);
+    .get(authController.isAuthenticated, friendController.getMyFriendRequest);
 router.route('/deleteFriend')
-    .delete(friendController.deleteFriend);
+    .delete(authController.isAuthenticated, friendController.deleteFriend);
 
 router.route('/getReceivedMessage')
-    .get(messageController.getReceivedMessage);
+    .get(authController.isAuthenticated, messageController.getReceivedMessage);
 router.route('/getSendedMessage')
-    .get(messageController.getSendedMessage);
+    .get(authController.isAuthenticated, messageController.getSendedMessage);
 router.route('/sendMessage')
-    .post(messageController.sendMessage);
+    .post(authController.isAuthenticated, messageController.sendMessage);
 router.route('/getConversation/:user_id')
-    .get(messageController.getConversation);
+    .get(authController.isAuthenticated, messageController.getConversation);
 
 router.route('/getMyNotifications/')
-    .get(notificationController.getMyNotifications);
+    .get(authController.isAuthenticated, notificationController.getMyNotifications);
 router.route('/getMyUnreadNotifications/')
-    .get(notificationController.getMyUnreadNotifications);
+    .get(authController.isAuthenticated, notificationController.getMyUnreadNotifications);
 router.route('/readNotification/')
-    .put(notificationController.readNotification);
+    .put(authController.isAuthenticated, notificationController.readNotification);
 
 router.route('/login')
     .post(authController.isAuthenticated, userController.login);
@@ -87,11 +87,11 @@ router.route('/users')
 
 router.route('/users/:user_id')
     .get(userController.getUser)
-    .put(userController.putUser)
-    .delete(userController.deleteUser);
+    .put(authController.isAuthenticated, userController.putUser)
+    .delete(authController.isAuthenticated, adminGroup(), userController.deleteUser);
 
 router.route('/notifications/:notification_id')
-    .put(notificationController.putNotification);
+    .put(authController.isAuthenticated, notificationController.putNotification);
 //.delete(authController.isAuthenticated, adminGroup(), notificationController.deleteNotification);
 //.get(notificationController.getNotification)
 
@@ -101,47 +101,47 @@ router.route('/notifications')
 
 router.route('/likes/:like_id')
     .get(likeController.getLike)
-    .delete(likeController.deleteLike);
+    .delete(authController.isAuthenticated, likeController.deleteLike);
 
 router.route('/likes')
-    .post(likeController.postLikes)
+    .post(authController.isAuthenticated, likeController.postLikes)
     .get(likeController.getLikes);
 
 
 router.route('/comments/:comment_id')
     .get(commentController.getComment)
-    .put(commentController.putComment)
-    .delete(commentController.deleteComment);
+    .put(authController.isAuthenticated, commentController.putComment)
+    .delete(authController.isAuthenticated, commentController.deleteComment);
 
 router.route('/comments')
-    .post(commentController.postComments)
+    .post(authController.isAuthenticated, commentController.postComments)
     .get(commentController.getComments);
 
 router.route('/ingredients/:ingredient_id')
     .get(ingredientController.getIngredient)
-    .put(ingredientController.putIngredient)
-    .delete(ingredientController.deleteIngredient);
+    .put(authController.isAuthenticated, adminGroup(), ingredientController.putIngredient)
+    .delete(authController.isAuthenticated, adminGroup(), ingredientController.deleteIngredient);
 
 router.route('/ingredients')
-    .post(ingredientController.postIngredients)
+    .post(authController.isAuthenticated, ingredientController.postIngredients)
     .get(ingredientController.getIngredients);
 
 router.route('/dishes/:dish_id')
     .get(dishController.getDish)
-    .put(dishController.putDish)
-    .delete(dishController.deleteDish);
+    .put(authController.isAuthenticated, dishController.putDish)
+    .delete(authController.isAuthenticated, dishController.deleteDish);
 
 router.route('/dishes')
-    .post(dishController.postDishes)
+    .post(authController.isAuthenticated, dishController.postDishes)
     .get(dishController.getDishes);
 
 router.route('/problems/:problem_id')
     .get(problemController.getProblem)
-    .put(problemController.putProblem)
-    .delete(problemController.deleteProblem);
+    .put(authController.isAuthenticated, adminGroup(), problemController.putProblem)
+    .delete(authController.isAuthenticated, adminGroup(), problemController.deleteProblem);
 
 router.route('/problems')
-    .post(problemController.postProblems)
+    .post(authController.isAuthenticated, problemController.postProblems)
     .get(problemController.getProblems);
 
 app.use('/api', router);
