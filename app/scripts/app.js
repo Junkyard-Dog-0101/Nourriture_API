@@ -185,7 +185,7 @@ angular
           if (event != null) {
             event.preventDefault();
             //这里是自己改的代码，修改上传图片插件的央视
-            $(".drop-here").html("Drop here");
+            $(".drop-here").html("Drag and Drop image here");
           }
           event.originalEvent.dataTransfer.effectAllowed = 'copy';
           return false;

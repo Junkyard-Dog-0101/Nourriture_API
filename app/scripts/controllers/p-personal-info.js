@@ -16,6 +16,13 @@ angular.module('webNourritureApp')
  	 		$scope.currentUser=data[0];
  	 	});
   	}; 
+ 	$http.get('api/getMyDishes/').success(
+	        function  (data) {
+	          $scope.dishes=data;
+	        }
+	      ).error(function  () {
+	          $scope.message="failed";
+	      });
 
   	$scope.modify=function  () {
 	 	$http({
@@ -37,5 +44,34 @@ angular.module('webNourritureApp')
 	                $scope.message='register error';
 	            });
   	} ; 
+
+  	$scope.toModifyDish=function  ($id) {
+  		$http.get('api/dishes/'+$id).success(function  (data) {
+            		$scope.detailInfo=data[0];
+          		}).error();
+  	};
+  	$scope.modifyDish=function  () {
+  		$http({
+  			method:'PUT',
+  			url:'api/dishes/'+$scope.detailInfo._id,
+  			data:"name="+$scope.detailInfo.name+
+  			"&description="+$scope.detailInfo.description,
+  			headers:{
+	                    'Content-Type': 'application/x-www-form-urlencoded',
+	                	}
+  		}).success(function  (data) {
+  			$http.get('api/dishes/'+$scope.detailInfo._id).success(function  (data) {
+            			$scope.detailInfo=data[0];
+            			$scope.message="success";
+            			 	$http.get('api/getMyDishes/').success(
+				        function  (data) {
+				          $scope.dishes=data;
+				        }
+				      ).error(function  () {
+				          $scope.message="failed";
+				      });
+          			}).error();
+  		}).error();  	
+  	};
 
   });

@@ -15,7 +15,7 @@
                                         </div>
 
                                         <div class="panel-body col-md-12">
-                                            <form method="post" id="defaultForm" id="form-login" class="form-horizontal">
+                                            <form ng-submit="register()" id="form-login" class="form-horizontal">
 
                                                 <div class="form-group">
                                                     <div class="col-xs-12">
@@ -54,6 +54,14 @@
                                                 <div class="form-group">
                                                     <div class="col-xs-12">
                                                         <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                                            <input ng-model="email" required  type="email" id="login-password" name="signupPwd" class="form-control input-lg" placeholder="Your email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
                                                                    <select name="gender" id="gender" class="form-control" ng-model="gender">
 	<option selected value="male" default="true">male</option>
@@ -83,6 +91,7 @@
                                                 </div>  
                                             </form>
                                         </div><!-- /.panel-body -->
+                                        {{message}}
                                         <div class="panel-body col-md-6">
                                             <div style="margin:20px;">
                                                 <p class="align-left" style="font-size:16px;color:#666;">Have account already? <a data-toggle="collapse" data-parent="#signin-page" href="#signup">Sign in </a>now!</p>

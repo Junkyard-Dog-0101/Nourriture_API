@@ -20,12 +20,14 @@ angular.module('webNourritureApp')
                 "&first_name="+$scope.firstName+
                 "&last_name="+$scope.lastName+
                 "&gender="+$scope.gender+
-                "&email="+$scope.email,
+                "&email="+$scope.email+
+                "&picture="+$scope.image,
                 headers:{
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).success(function  (data,status,headers,config) {
-                $scope.message='register success';
+                 $location.path('/');
+                    $window.location.reload();
             })
             .error(function (data, status, headers, config) {
                 $scope.message='register error';

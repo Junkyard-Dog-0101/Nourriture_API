@@ -12,7 +12,7 @@ exports.postDishes = function (req, res) {
         var guid = my_chance.guid();
         dish.picture = "uploads/" + guid + ".png";
         var base64Data = req.body.picture.replace(/^data:image\/png;base64,/, "");
-        fs.writeFile('uploads/' + guid + '.png', base64Data, 'base64', function (err) {
+        fs.writeFile('app/uploads/' + guid + '.png', base64Data, 'base64', function (err) {
             if (err)
                 res.status(400).json(err);
             else {
