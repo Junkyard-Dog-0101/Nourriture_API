@@ -12,9 +12,9 @@ angular.module('webNourritureApp')
   $scope.message='message';
   $scope.username=$window.sessionStorage['username'];
   $scope.userid=$window.sessionStorage['userid'];
-  $http.get('api/recipes').success(function  (data) {
-     $scope.recipelist=data;
-  });
+  // $http.get('api/recipes').success(function  (data) {
+  //    $scope.recipelist=data;
+  // });
   $scope.addRecipe=function  () {
     $http({
       method:'POST',

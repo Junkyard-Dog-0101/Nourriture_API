@@ -9,9 +9,16 @@
  */
 angular.module('webNourritureApp')
   .controller('PFriendsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    //init page
+    $scope.friendList=[
+	    {
+	    	"id":1,
+	    	"name":2,
+	    },
+	    {
+
+	    },
+	    {
+
+	    }];
   });

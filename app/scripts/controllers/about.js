@@ -10,6 +10,8 @@
 angular.module('webNourritureApp')
   .controller('AboutCtrl', function ($scope) {
 	$scope.todos=['Item1','Item2','Item3'];
+        $scope.image = null
+        $scope.imageFileName = ''
  	$scope.addTodo = function () {
  		if ($scope.todo) {
  			$scope.todos.push($scope.todo);
