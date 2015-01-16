@@ -1,15 +1,15 @@
-<div>
-    <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]"
+<div class="col-md-12">
+    <div class="dropzone alert alert-info col-md-3" file-dropzone="[image/png, image/jpeg, image/gif]"
                   file="image" file-name="imageFileName" data-max-file-size="3">
-      <span>Drop Image Here</span>
+      	<span class="drop-here">drop here</span>
     </div>
     <div class="image-container">
-      <img ng-src={{image}} />
-      <span class="file-name">{{imageFileName}}</span>
-      <span>{{image}}</span>
+      <img style="display: none" ng-src={{image}}  class="img-thumbnail img-upload" />
+      <span style="display: none;" class="file-name">{{imageFileName}}</span>
+      <span style="display: none;">{{image}}</span>
     </div>
 </div>
-<style type="text/css">
+<!--<style type="text/css">
 .dropzone {
   width: 250px;
   height: 45px;
@@ -32,7 +32,7 @@
 .file-name {
    font-family: Arial;   
 }
-</style>
+</style>-->
 <div class="container">
   <h2>My todos</h2>
    <!-- Todos input -->
