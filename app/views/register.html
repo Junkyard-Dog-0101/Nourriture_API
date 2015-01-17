@@ -77,9 +77,9 @@
       	<span class="drop-here">Your avatar</span>
     </div>
     <div class="image-container">
-      <img style="display: none" ng-src={{image}}  class="img-thumbnail img-upload" />
+      <img style="display: none" ng-src={{image}}  ng-model="image"class="img-thumbnail img-upload" />
       <span style="display: none;" class="file-name">{{imageFileName}}</span>
-      <span style="display: none;">{{image}}</span>
+      <span style="display: block;">{{image}}</span>
     </div>
 </div>
 </div>
@@ -91,7 +91,7 @@
                                                 </div>  
                                             </form>
                                         </div><!-- /.panel-body -->
-                                        {{message}}
+                                        {{picitems}}
                                         <div class="panel-body col-md-6">
                                             <div style="margin:20px;">
                                                 <p class="align-left" style="font-size:16px;color:#666;">Have account already? <a data-toggle="collapse" data-parent="#signin-page" href="#signup">Sign in </a>now!</p>

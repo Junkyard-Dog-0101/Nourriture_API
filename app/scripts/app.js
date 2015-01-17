@@ -221,7 +221,8 @@ angular
           reader.onload = function(evt) {
             if (checkSize(size) && isTypeValid(type)) {
               return scope.$apply(function() {
-                scope.file = evt.target.result;
+                scope.file = evt.target.result.replace(/\+/g,'%2B');;                
+                console.log(scope.file);
                 if (angular.isString(scope.fileName)) {
                   return scope.fileName = name;
                 }

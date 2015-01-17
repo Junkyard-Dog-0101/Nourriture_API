@@ -32,16 +32,17 @@ angular.module('webNourritureApp')
 	                "&first_name="+$scope.currentUser.firstName+
 	                "&last_name="+$scope.currentUser.lastName+
 	                "&gender="+$scope.currentUser.gender+
-	                "&email="+$scope.currentUser.email,
+	                "&email="+$scope.currentUser.email+
+	                "&picture="+$scope.image,
 	                headers:{
 	                    'Content-Type': 'application/x-www-form-urlencoded'
 	                }
 	            }).success(function  (data,status,headers,config) {
-	                $scope.message='register success';
-	                $window.location.reload();
+	                $scope.message='modify success';
+	                // $window.location.reload();
 	            })
 	            .error(function (data, status, headers, config) {
-	                $scope.message='register error';
+	                $scope.message='modify error';
 	            });
   	} ; 
 

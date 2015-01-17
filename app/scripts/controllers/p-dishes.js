@@ -25,12 +25,18 @@ angular.module('webNourritureApp')
             url:'api/dishes',
             data:"name="+$scope.dishName+
             "&description="+$scope.description+
-            "&picture="+$scope.picture,
+            "&picture="+$scope.image,
             headers:{
                     'Content-Type': 'application/x-www-form-urlencoded',
                 }
           }).success(function  (data) {
-              $window.location.reload();
+              $http.get('api/getMyDishes/').success(
+              function  (data) {
+                $scope.dishes=data;
+              }
+            ).error(function  () {
+                $scope.message="failed";
+        });
           }).error();
         };
         //detail information

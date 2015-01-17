@@ -11,6 +11,9 @@ angular.module('webNourritureApp')
   .controller('RegisterCtrl',  
   	['$scope', '$rootScope', '$location','$http','$window','AuthenticationService',
     	function ($scope, $rootScope, $location, $http,$window, AuthenticationService) {
+            $scope.newstring={};
+            $scope.orignalpic={};
+            var imagestring={};
           $scope.register=function  () {
             $http({
                 method: 'POST',
@@ -27,10 +30,11 @@ angular.module('webNourritureApp')
                 }
             }).success(function  (data,status,headers,config) {
                  $location.path('/');
-                    $window.location.reload();
+                    // $window.location.reload();
             })
             .error(function (data, status, headers, config) {
                 $scope.message='register error';
             });
         };
+
   }]);

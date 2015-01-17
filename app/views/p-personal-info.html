@@ -21,7 +21,7 @@ color: #fff;">Modify MyDishes</span>
 
                                                    <div class="col-xs-6 col-md-4"  ng-repeat='dish in dishes'>
                                                     <div class="thumbnail">
-                                                        <img src="img/samples/placeholders/place-1.jpg" alt="Sample thumbnail 1">
+                                                        <img ng-src="{{dish.picture}}" alt="Sample thumbnail 1">
                                                         <div class="caption">
                                                            <h3>{{dish.name}}</h3>
                                                             <p>{{dish.description}}</p>
@@ -74,6 +74,7 @@ color: #fff;">基本资料</span>
   <div class="modal-body">
       <div class="media">
       <p class="well">{{detailInfo.description}}</p> 
+      <p class="well"><img ng-src="{{detailInfo.picture}}"></p>
       <form class="form-comment" ng-submit="modifyDish()">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Change name" ng-model="detailInfo.name"><br/>
@@ -107,9 +108,10 @@ color: #fff;">基本资料</span>
       	<span class="drop-here">Your Avatar</span>
     </div>
     <div class="image-container">
-      <img style="display: none" ng-src={{image}}  class="img-thumbnail img-upload" />
+      <img style="display: none" ng-src={{image}}  ng-model="image" class="img-thumbnail img-upload" />
       <span style="display: none;" class="file-name">{{imageFileName}}</span>
       <span style="display: none;">{{image}}</span>
+      <img ng-src="{{currentUser.picture}}">
     </div>
 </div>
 
