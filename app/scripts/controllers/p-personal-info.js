@@ -75,4 +75,15 @@ angular.module('webNourritureApp')
   		}).error();  	
   	};
 
+  	$scope.delete=function  ($id) {
+  		$http.delete('api/dishes/'+$id).success(function  () {
+  			$http.get('api/getMyDishes/').success(
+			        function  (data) {
+			          $scope.dishes=data;
+			        }
+			      ).error(function  () {
+			          $scope.message="failed";
+			      });
+  		}).error();
+  	}
   });
