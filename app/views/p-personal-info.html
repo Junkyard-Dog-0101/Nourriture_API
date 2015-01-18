@@ -74,7 +74,7 @@ color: #fff;">基本资料</span>
   <div class="modal-body">
       <div class="media">
       <p class="well">{{detailInfo.description}}</p> 
-      <p class="well"><img style="width: 100px;height: 100px" ng-src="{{detailInfo.picture}}"></p>
+      <p class="well"><img  style="width:500px" ng-src="{{detailInfo.picture}}"></p>
       <form class="form-comment" ng-submit="modifyDish()">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Change name" ng-model="detailInfo.name"><br/>
@@ -102,7 +102,7 @@ color: #fff;">基本资料</span>
       <div class="modal-body">
       <div class="media">
 <form ng-submit="modify()" class="form-horizontal" role="form">
-<div class="form-group">
+<!-- <div class="form-group">
 <label for="avatar" class="col-sm-2 control-label">Avatar</label>
 <div class="col-sm-10">
     <div class="dropzone alert alert-info col-md-3" file-dropzone="[image/png, image/jpeg, image/gif]"
@@ -117,7 +117,7 @@ color: #fff;">基本资料</span>
     </div>
 </div>
 
-</div>
+</div> -->
   <div class="form-group">
     <label for="username" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-10">

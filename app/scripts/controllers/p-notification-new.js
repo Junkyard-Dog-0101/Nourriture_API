@@ -8,7 +8,7 @@
  * Controller of the webNourritureApp
  */
 angular.module('webNourritureApp')
-  .controller('PNotificationNewCtrl', function ($scope,$http,$location,localStorageService) {
+  .controller('PNotificationNewCtrl', function ($scope,$http,$window,$location,localStorageService) {
   	$scope.noid=$location.search().id;
   	$scope.sendmessage=function  () {
 	  	$http({
@@ -22,6 +22,7 @@ angular.module('webNourritureApp')
 	  	}).success(function  () {
 	  		$scope.message="success";
 	  		$location.path('/p-notifications');
+	  		$window.location.reload();
 	  	}).error();
   	};
 
