@@ -11,7 +11,6 @@
                             <div class="panel-body shadow-effect">
                                 <div>
                                  <dl class="dl-horizontal">
-                                    <!-- <h3><i class="fa fa-money"></i> 我的身价</h3> -->
                                     <span style="padding: 10px;
 background-color: #3872a4;
 margin: 0px 0 0 -15px;
@@ -49,6 +48,8 @@ color: #fff;">Modify MyDishes</span>
 background-color: #3872a4;
 margin: 0px 0 0 -15px;
 color: #fff;">基本资料</span>
+<p><img style="display: none;width:100px;height:100px" ng-src={{image}}  ng-model="image" class="img-thumbnail img-upload" /></p>
+
                                         <h3>{{currentUser.username}}</h3>
                                         <p><span class="resume-label">性别:{{currentUser.gender}} </span></p>
                                         <p><span class="resume-label">邮箱:{{currentUser.email}}</span></p>
@@ -74,7 +75,7 @@ color: #fff;">基本资料</span>
   <div class="modal-body">
       <div class="media">
       <p class="well">{{detailInfo.description}}</p> 
-      <p class="well"><img ng-src="{{detailInfo.picture}}"></p>
+      <p class="well"><img style="width: 100px;height: 100px" ng-src="{{detailInfo.picture}}"></p>
       <form class="form-comment" ng-submit="modifyDish()">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Change name" ng-model="detailInfo.name"><br/>
@@ -110,7 +111,7 @@ color: #fff;">基本资料</span>
       	<span class="drop-here">Your Avatar</span>
     </div>
     <div class="image-container">
-      <img style="display: none" ng-src={{image}}  ng-model="image" class="img-thumbnail img-upload" />
+      <img style="display: none;width:100px;height:100px" ng-src={{image}}  ng-model="image" class="img-thumbnail img-upload" />
       <span style="display: none;" class="file-name">{{imageFileName}}</span>
       <span style="display: none;">{{image}}</span>
       <img ng-src="{{currentUser.picture}}">
