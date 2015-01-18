@@ -16,7 +16,7 @@
 
                                         <div class="panel-body col-md-12">
                                             <form ng-submit="register()" id="form-login" class="form-horizontal">
-
+<div class="col-md-8">
                                                 <div class="form-group">
                                                     <div class="col-xs-12">
                                                         <div class="input-group">
@@ -70,17 +70,20 @@
                                                         </div>
                                                     </div>
                                                 </div>
+</div>
+<div class="col-md-4">
                                                                                             <div class="form-group">
                                            <div class="col-md-12">
-    <div class="dropzone alert alert-info col-md-2" file-dropzone="[image/png, image/jpeg, image/gif]"
+    <div style="width: 150px;height: 150px" class="dropzone alert alert-info col-md-12" file-dropzone="[image/png, image/jpeg, image/gif]"
                   file="image" file-name="imageFileName" data-max-file-size="3">
       	<span class="drop-here">Your avatar</span>
     </div>
     <div class="image-container">
-      <img style="display: none" ng-src={{image}}  ng-model="image"class="img-thumbnail img-upload" />
+      <img style="display: none;width: 150px;height: 150px" ng-src={{image}}  ng-model="image"class="img-thumbnail img-upload" />
       <span style="display: none;" class="file-name">{{imageFileName}}</span>
-      <span style="display: block;">{{image}}</span>
+      <span style="display: none;">{{image}}</span>
     </div>
+</div>
 </div>
 </div>
                                                 <div class="col-xs-12">
@@ -101,7 +104,7 @@
                                 </div><!-- /.panel -->
                             
 
-o
+
                         </div><!-- /#content -->
 
                     </section>

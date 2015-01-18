@@ -13,7 +13,7 @@
                                                 <span class="drop-here">Picture of dish</span>
                                                 </div>
                                                 <div class="image-container">
-                                                  <img style="display: none" ng-src={{image}}  class="img-thumbnail img-upload" />
+                                                  <img style="display: none;width: 150px;height: 150px" ng-src={{image}}  class="img-thumbnail img-upload" />
                                                   <span style="display: none;" class="file-name">{{imageFileName}}</span>
                                                   <span style="display: none;">{{image}}</span>
                                                 </div>
@@ -49,7 +49,7 @@
                 <div class="col-md-12 row">
                     <div class="col-xs-6 col-md-3" ng-repeat='dish in dishes'>
                                                     <div class="thumbnail">
-                                                        <img ng-src="{{dish.picture}}" alt="Sample thumbnail 1">
+                                                        <img style="width: 150px;height: 150px" ng-src="{{dish.picture}}" alt="Sample thumbnail 1">
                                                         <div class="caption">
                                                             <h3>{{dish.name}}</h3>
                                                             <p>{{dish.description}}</p>
@@ -83,7 +83,7 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Comment</label>
     <div class="col-sm-10">
-      <textarea class="form-control" rows="3" ng-model="content"></textarea>
+      <textarea required class="form-control" rows="3" ng-model="content"></textarea>
     </div>
   </div>
 
@@ -102,9 +102,6 @@
                                                             <p>{{comment.content}}</p>
 
                                                             <ul class="list-inline">
-                                                                <li><a href="#" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a></li>
-                                                                <li><a href="#" class="small">Comment</a></li>
-                                                                <li><a href="#" class="small">Share</a></li>
                                                                 <li><span class="muted small">about an hour ago</span></li>
                                                             </ul>
 
