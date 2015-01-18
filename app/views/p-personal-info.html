@@ -6,7 +6,6 @@
                         <div class="panel panel-default resume-block">
                             
                                 <div>
-                                    <!-- <h4>Level 1 菜鸟</h4> -->
                             </div>
                             <div class="panel-body shadow-effect">
                                 <div>
@@ -81,7 +80,7 @@ color: #fff;">基本资料</span>
                       <input type="text" class="form-control" placeholder="Change name" ng-model="detailInfo.name"><br/>
                     <input type="text" class="form-control" placeholder="Change description" ng-model="detailInfo.description"><br/>
                       <input class="btn btn-primary" type="submit" value="change"/>
-                      <input class="btn btn-danger" type="button" value="delete" style="float:right" ng-click="delete(detailInfo._id)"/>
+                      <input data-dismiss="bs-example-modal-lg" class="btn btn-danger" type="button" value="delete" style="float:right" ng-click="delete(detailInfo._id)"/>
                       {{message}}
     </div>
        </form>
@@ -158,7 +157,7 @@ color: #fff;">基本资料</span>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button data-dismiss="modal-personal-info" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>
