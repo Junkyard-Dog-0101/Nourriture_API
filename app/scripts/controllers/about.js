@@ -8,7 +8,8 @@
  * Controller of the webNourritureApp
  */
 angular.module('webNourritureApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl', ['MyService',function (MyService,$scope) {
+    $scope.customers = MyService.getCustomers();
 	$scope.todos=['Item1','Item2','Item3'];
         $scope.image = null
         $scope.imageFileName = ''
@@ -24,4 +25,4 @@ angular.module('webNourritureApp')
   	$scope.removeTodo=function(index){
   		$scope.todos.splice(index,1);
   	}
-});
+}]);

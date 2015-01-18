@@ -9,9 +9,5 @@
  */
 angular.module('webNourritureApp')
   .controller('PNotificationOutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

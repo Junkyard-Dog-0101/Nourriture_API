@@ -58,15 +58,15 @@
                 <div class="navbar-collapse collapse" role="navigation">
                     <ul class="nav navbar-nav">
                         <li><a href="/#/">Home</a></li>
-                        <li><a href="/#/p-dishes">MyDishes<span class="pull-right badge badge-danger">1</span></a></li>
-                        <li><a href="/#/p-friends">Friends<span class="pull-right badge badge-danger">2</span></a></li>
+                        <li><a href="/#/p-dishes">MyDishes<span class="pull-right badge badge-danger" ng-bind="notifications"></span></a></li>
+                       <!--  <li><a href="/#/p-friends">Friends<span class="pull-right badge badge-danger">2</span></a></li> -->
                     </ul>
                     <ul  ng-show="isLogIn" class="nav navbar-nav navbar-right">
                         <li>
-                            <a ng-href="#/p-notifications"><i class="imoon imoon-envelope fa-fw"></i><span class="pull-right badge badge-danger">4</span></a>
+                            <a ng-href="#/p-notifications"><i class="imoon imoon-envelope fa-fw"></i><span class="pull-right badge badge-danger" ng-bind="notifications"></span></a>
                         </li>
                         <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="text">{{username}}</span> <b class="caret"></b></a>
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="text" ng-bind="username"></span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a ng-href="/#/p-personal-info">Personal Info</a></li>
                                 <li><a ng-href="/#/p-change-pwd">Challenge Password</a></li>
@@ -119,6 +119,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

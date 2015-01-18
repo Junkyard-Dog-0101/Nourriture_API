@@ -20,8 +20,12 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-     'ui.sortable'
-  ])
+     'ui.sortable',
+     'LocalStorageModule'
+  ]) 
+  .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+    localStorageServiceProvider.setPrefix('nt');
+  }])
   .config(['$routeProvider', '$locationProvider',  function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
@@ -130,6 +134,69 @@ angular
         }
     }
 }])
+  .factory('MyService', ['$q', '$rootScope', function($q, $rootScope) {
+    // We return this object to anything injecting our service
+    var Service = {};
+    // Keep all pending requests here until they get responses
+    var callbacks = {};
+    // Create a unique callback ID to map requests to responses
+    var currentCallbackId = 0;
+    // Create our websocket object with the address to the websocket
+    var ws = new WebSocket("ws://localhost:1337/api/notifications");
+    
+    ws.onopen = function(){  
+        console.log("Socket has been opened!");  
+    };
+    
+    ws.onmessage = function(message) {
+        listener(JSON.parse(message.data));
+    };
+
+    function sendRequest(request) {
+      var defer = $q.defer();
+      var callbackId = getCallbackId();
+      callbacks[callbackId] = {
+        time: new Date(),
+        cb:defer
+      };
+      request.callback_id = callbackId;
+      console.log('Sending request', request);
+      ws.send(JSON.stringify(request));
+      return defer.promise;
+    }
+
+    function listener(data) {
+      var messageObj = data;
+      console.log("Received data from websocket: ", messageObj);
+      // If an object exists with callback_id in our callbacks object, resolve it
+      if(callbacks.hasOwnProperty(messageObj.callback_id)) {
+        console.log(callbacks[messageObj.callback_id]);
+        $rootScope.$apply(callbacks[messageObj.callback_id].cb.resolve(messageObj.data));
+        delete callbacks[messageObj.callbackID];
+      }
+    }
+    // This creates a new callback ID for a request
+    function getCallbackId() {
+      currentCallbackId += 1;
+      if(currentCallbackId > 10000) {
+        currentCallbackId = 0;
+      }
+      return currentCallbackId;
+    }
+
+    // Define a "getter" for getting customer data
+    Service.getCustomers = function() {
+      var request = {
+        type: "get_customers"
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request); 
+      return promise;
+    }
+
+    return Service;
+}])
+
 .config(['$httpProvider',function($httpProvider) {
     //Http Intercpetor to check auth failures for xhr requests
     $httpProvider.interceptors.push('authHttpResponseInterceptor');
@@ -151,13 +218,27 @@ angular
             }
         });
     }]).controller('HeaderController',
-     ['$rootScope','$scope', '$http', '$location',  '$cookieStore','$window', 'AuthenticationService',
-     function ($rootScope,$scope,$http, $location, $cookieStore,$window,AuthenticationService) {
+     ['$rootScope','$scope', '$http', '$location',  '$cookieStore','$window', 'AuthenticationService','localStorageService',
+     function ($rootScope,$scope,$http, $location, $cookieStore,$window,AuthenticationService,localStorageService) {
+
+      var notificationInStore = localStorageService.get('notificationlist');
+      $scope.notificationlist=notificationInStore||[];
+
+       // $scope.$watch('notificationlist', function () {
+       //      localStorageService.set('notificationlist', $scope.notificationlist);
+       //    }, true);
 
       if($rootScope.globals.currentUser){
          $scope.isLogIn=true;
           $scope.username= $window.sessionStorage['username'];
           $scope.userid=$window.sessionStorage['userid'];
+          //get message numbers
+          $http.get('api/getMyUnreadNotifications/').success(function  (data) {
+            $scope.notifications=data.length;
+            for (var i = 0; i < data.length; i++) {
+              $scope.notificationlist.push(data[i]);
+            };
+          }).error();
       }else{
         $scope.isLogIn=false;
       }
@@ -165,6 +246,7 @@ angular
       $scope.logout=function  () {
         delete $window.sessionStorage['userid'];
         delete $window.sessionStorage['username'];
+        delete $window.localStorage['nt.notificationlist'];
         $scope.isLogIn=false;
         AuthenticationService.ClearCredentials();
         $window.location.reload();
@@ -212,14 +294,15 @@ angular
         element.bind('dragenter', processDragOverOrEnter);
         return element.bind('drop', function(event) {
           var file, name, reader, size, type;
-          if (event != null) {
-            event.preventDefault();
-            $(".dropzone").css("display","none");
-            $(".img-upload").show();
-          }
+
           reader = new FileReader();
           reader.onload = function(evt) {
             if (checkSize(size) && isTypeValid(type)) {
+                        if (event != null) {
+                        event.preventDefault();
+                        $(".dropzone").css("display","none");
+                        $(".img-upload").show();
+                      };
               return scope.$apply(function() {
                 scope.file = evt.target.result.replace(/\+/g,'%2B');;                
                 console.log(scope.file);
