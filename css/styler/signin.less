@@ -1,0 +1,72 @@
+@import "mixins.less";
+@import "variables.less";
+
+.input-group-addon, .form-control {
+    background-color: transparent;
+    border-color: transparent;
+    .border-radius(0);
+    .box-shadow(0 0 0 #fff);
+}
+
+.input-group-btn > .btn {
+    border-color: transparent;
+    .border-radius(0);
+    .box-shadow(0 0 0 #fff);
+}
+
+
+.form-control:focus {
+    border-color: transparent;
+    .box-shadow(0 0 0 #fff);   
+}
+
+.form-group {
+    border-bottom: dotted 1px #ddd;
+    padding-bottom: 10px;
+
+    &:last-child {
+        border: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+#middle {
+    background-color: transparent;
+    #content {
+        &.signin-page {
+            padding: 0;
+
+            .panel {
+                .panel-heading {
+                    background-color: @first-color;
+                    margin-bottom: 20px;
+                    .align-center;
+                    .border-radius(0);
+                    .panel-title {
+                        color: #fff;
+                        font-size: 1.8em;
+                        padding: 25px 25px 10px;
+                        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                    }
+                }
+            }
+        }
+
+        .form-group {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+}
+
+
+.brand {
+    margin-bottom: 40px;
+    &.brand-big {
+        font-size: 1.3em;
+        img {
+            display: inline-block;
+        }
+    }
+}

@@ -1,0 +1,119 @@
+.nav {
+    li {
+        a {
+            position: relative;
+            .transition;
+            &:hover {
+                .transition;
+            }
+
+        }
+    }
+
+    &.nav-pills {
+        > li {
+            > a {
+                .border-radius(2px);
+                > .badge {
+                    margin-top: 4px;
+                }
+            }
+        }
+    }
+}
+
+.imoon {
+    &:before {
+        z-index: 100;
+    }
+}
+
+.nav-stacked {
+    li {
+        &.list-default {
+            border-left: solid 5px @gray-light;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+        &.list-primary {
+            border-left: solid 5px @brand-primary;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+        &.list-success {
+            border-left: solid 5px @brand-success;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+        &.list-info {
+            border-left: solid 5px @brand-info;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+        &.list-warning {
+            border-left: solid 5px @brand-warning;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+        &.list-danger {
+            border-left: solid 5px @brand-danger;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+        &.list-inverse {
+            border-left: solid 5px @brand-inverse;
+            padding-left: 2px;
+            > a {
+                .border-radius(0 2px 2px 0);
+            }
+        }
+    }
+}
+
+
+.nav-pills {
+    > li {
+        &.active {
+            > a {
+                background-color: darken(@first-color, 10%);
+                &:hover {
+                    background-color: @first-color;
+                }
+
+                &:focus {
+                    background-color: @first-color;
+                }
+
+                > .text-muted, > .muted {
+                    color: rgba(255, 255, 255, 0.4);
+                }
+            }
+        }
+    }
+}
+
+.panel-no-padding {
+    .nav-pills {
+        > li {
+            > a {
+                .border-radius(0);
+            }
+
+            & + li {
+                margin-top: 0;
+            }
+        }
+    }
+}

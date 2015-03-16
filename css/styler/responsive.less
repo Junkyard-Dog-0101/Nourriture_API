@@ -1,0 +1,182 @@
+
+// 767px and below
+@media (max-width: @screen-sm-min) {
+    .col-no-left-padding {
+        padding-left: 15px;
+    }
+    #middle {
+        margin-bottom: 15px;
+    }
+    .panel-user {
+        .panel-body {
+            padding: 5px 0 !important;
+        }
+        .panel-heading {
+            padding: 10px 15px 0;
+            .media {
+                > .pull-left {
+                    display: block;
+                    float: none !important;
+                    margin: 0;
+                    .align-center;
+
+                    .media-object {
+                        display: inline-block;
+                    }
+                }
+            }
+            .media-body {
+                .media-heading {
+                    .align-center;
+                    .welcome {
+                        display: none;
+                    }
+                    > span {
+                        font-size: .8em;
+                    }
+                }
+            }
+        }
+    }
+    .navbar-toggle {
+        background-color: rgba(255,255,255,0.1);
+        color: #fff;
+        padding: 3px 10px;
+        .icon-bar {
+            color: #fff;
+        }
+    }
+    #top-nav {
+        background-color: rgba(0, 0, 0, 0.2);
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+
+        > ul {
+            margin-bottom: 0;
+            margin-top: 0;
+            > li {
+                .divider {
+                    background-color: rgba(255, 255, 255, 0.2);
+                    height: 1px;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    #mainnav {
+        .navbar-form {
+            .box-shadow(0 0 0 #fff);
+            .form-control {
+                background-color: #fff;
+                width: 100%;
+            }
+        }
+    }
+    .user-profile {
+        .profile-info {
+            .thumbnail {
+                margin-right: 30px;
+                width: 120px;
+            }
+        }
+    }
+}
+
+// 768px and above
+@media (min-width: @screen-sm-max) {
+
+}
+
+
+// Very extra small screen
+// 479px and lower
+@media (max-width: @screen-xs-min) {
+    #mainnav {
+    background-color: darken(@first-color, 30%);
+    .border-radius(2px 2px 0 0);
+    .navbar-brand {
+        color: #fff;
+        height: auto;
+    }
+
+    #top-nav {
+        .nav {
+            }
+            .open {
+                .dropdown-menu {
+                    > li {
+                        > a {
+                            color: #fff;
+                            background-color: rgba(0, 0, 0, 0.1);
+                            &:hover {
+                                background-color: rgba(0, 0, 0, 0.2);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Very small screen
+// 480px to 767px
+@media (min-width: @screen-xs-min) and (max-width: @screen-xs-max) {
+
+}
+
+
+// Small screen
+// 768px to 991px
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+    // top-nav
+    #top-nav {
+        .nav {
+            > li {
+                > a {
+                    padding-bottom: 10px;
+                    .text {
+                        display: none;
+                    }
+
+                    i {
+                        font-size: 1.5em;
+                    }
+                }
+            }
+        }
+    }
+
+    .list-user-app {
+        > li {
+            > a {
+                padding: 5px 0;
+
+                .badge {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    
+
+}
+
+
+// Medium screen
+// 992px to 1199px
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+
+}
+
+
+// Large screen
+// 1200px and up
+@media (min-width: @screen-lg-min) {
+
+}

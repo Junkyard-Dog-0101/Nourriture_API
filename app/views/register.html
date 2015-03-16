@@ -1,0 +1,160 @@
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-push-2 col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2">
+                    <section id="middle">
+
+                        <div id="" class="signin-page">
+
+                            <div class="panel-group" id="signin-page">
+
+                            <h3 class="panel-title" style="font-size: 2.4em;padding: 25px 25px 10px;text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);">Nourriture Sign Up</h3>
+                                <div class="panel panel-outline panel-no-padding" style="border:none;">
+                                    <div id="signin" class="panel-collapse collapse in">
+                                        <div class="panel-heading" style="background-color: #6496be;padding:3px;">
+                                            
+                                        </div>
+
+                                        <div class="panel-body col-md-12">
+                                            <form ng-submit="register()" id="form-login" class="form-horizontal">
+<div class="col-md-8">
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                            <input ng-model="username" required type="text" id="login-email" name="signupEmail" class="form-control input-lg" placeholder="Your username">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                                            <input ng-model="password" required  type="password" id="login-password" name="signupPwd" class="form-control input-lg" placeholder="Your password">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                                            <input ng-model="firstName" required  type="text" id="login-password" name="signupPwd" class="form-control input-lg" placeholder="Your firstname">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                                            <input ng-model="lastName" required  type="text" id="login-password" name="signupPwd" class="form-control input-lg" placeholder="Your lastname">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                                            <input ng-model="email" required  type="email" id="login-password" name="signupPwd" class="form-control input-lg" placeholder="Your email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                                                                   <select name="gender" id="gender" class="form-control" ng-model="gender">
+	<option selected value="male" default="true">male</option>
+  	<option value="female">female</option>
+        </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+</div>
+<div class="col-md-4">
+                                                                                            <div class="form-group">
+                                           <div class="col-md-12">
+    <div style="width: 150px;height: 150px" class="dropzone alert alert-info col-md-12" file-dropzone="[image/png, image/jpeg, image/gif]"
+                  file="image" file-name="imageFileName" data-max-file-size="3">
+      	<span class="drop-here">Your avatar</span>
+    </div>
+    <div class="image-container">
+      <img style="display: none;width: 150px;height: 150px" ng-src={{image}}  ng-model="image"class="img-thumbnail img-upload" />
+      <span style="display: none;" class="file-name">{{imageFileName}}</span>
+      <span style="display: none;">{{image}}</span>
+    </div>
+</div>
+</div>
+</div>
+                                                <div class="col-xs-12">
+                                                    <button type="submit" class="btn btn-primary btn-lg" style="margin-left:20px;border-radius: 3px;" id="submit">Sign Up</button>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    
+                                                </div>  
+                                            </form>
+                                        </div><!-- /.panel-body -->
+                                        {{picitems}}
+                                        <div class="panel-body col-md-6">
+                                            <div style="margin:20px;">
+                                                <p class="align-left" style="font-size:16px;color:#666;">Have account already? <a data-toggle="collapse" data-parent="#signin-page" href="#signup">Sign in </a>now!</p>
+                                            </div>
+                                        </div><!-- /.panel-body -->
+                                    </div><!-- /.panel-collapse -->
+                                </div><!-- /.panel -->
+                            
+
+
+                        </div><!-- /#content -->
+
+                    </section>
+                </div><!-- /.col-md-10 -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+
+<!--<form name="form" ng-submit="register()" role="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+        <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <i class="fa fa-lock"></i>
+        <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+        <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+    </div>
+    <div class="form-group">
+        <label for="firstName">firstName</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="firstName" id="firstName" class="form-control" ng-model="firstName" required />
+        <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">firstName is required</span>
+    </div>
+    <div class="form-group">
+        <label for="lastName">lastName</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="lastName" id="lastName" class="form-control" ng-model="lastName" required />
+        <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">lastName is required</span>
+    </div>
+    <div class="form-group">
+        <label for="gender">gender</label>
+        <i class="fa fa-key"></i>
+        <select name="gender" id="gender" class="form-control" ng-model="gender">
+	<option value="male" default="true">male</option>
+  	<option value="female">female</option>
+        </select>
+        <span ng-show="form.gender.$dirty && form.gender.$error.required" class="help-block">gender is required</span>
+    </div>
+    <div class="form-group">
+        <label for="email">email</label>
+        <i class="fa fa-key"></i>
+        <input type="text" name="email" id="email" class="form-control" ng-model="email" required />
+        <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">email is required</span>
+    </div>
+    <div class="form-actions">
+        <button type="submit"  class="btn btn-danger">Register</button>
+    </div>
+    <div class="success">{{message}}</div>
+</form>-->

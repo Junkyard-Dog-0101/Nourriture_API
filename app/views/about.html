@@ -1,0 +1,60 @@
+{{customers}}
+<div class="col-md-12">
+    <div class="dropzone alert alert-info col-md-3" file-dropzone="[image/png, image/jpeg, image/gif]"
+                  file="image" file-name="imageFileName" data-max-file-size="3">
+      	<span class="drop-here">drop here</span>
+    </div>
+    <div class="image-container">
+      <img style="display: none" ng-src={{image}}  class="img-thumbnail img-upload" />
+      <span style="display: none;" class="file-name">{{imageFileName}}</span>
+      <span style="display: none;">{{image}}</span>
+    </div>
+</div>
+<!--<style type="text/css">
+.dropzone {
+  width: 250px;
+  height: 45px;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 30px;
+  margin: 20px;
+  font-family: Arial;
+}
+
+.image-container {
+    width: 300px;
+    height: 300px;
+}
+
+.image-container img {
+   max-width: 100%;   
+}
+
+.file-name {
+   font-family: Arial;   
+}
+</style>-->
+<div class="container">
+  <h2>My todos</h2>
+   <!-- Todos input -->
+  <form role="form" ng-submit="addTodo()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+      </div>
+    </div>
+  
+    <!-- Todos list -->
+    <div ui-sortable ng-model="todos">
+    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+      <input type="text" ng-model="todo" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
+      </span>
+    </p>
+  </div>
+  </form>
+</div>

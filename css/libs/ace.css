@@ -1,0 +1,127 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html,body{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+/* 视频 */
+#videoModal .modal-dialog{
+	/* width: 900px; */
+}
+.editor-panel{
+	position:absolute;
+	height:100%;
+	width:260px;
+	left: 0;
+	overflow-y: auto;
+}
+.div-right{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 260px;
+	right: 0;
+}
+
+#editor{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0;
+	right:	0;
+}
+
+.top-bar{
+	position:fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 1000;
+	
+	
+	border: 1px solid #ddd;
+	width:310px;
+	height: 60px;
+	padding: 10px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+	box-shadow: 0 1px 2px rgba(0,0,0,.075);
+	zoom: 1;
+	overflow: hidden;
+	background: #f1f1f1;
+}
+}
+.panel-innner{
+}
+/* #btn-run{
+	position: absolute;
+	width: 50px;
+	right: 10px;
+	top: 2px;
+	bottom: 2px;
+}
+#btn_run_java{
+	position: absolute;
+	width: 50px;
+	right: 10px;
+	top: 2px;
+	bottom: 2px;
+}
+#btn_manito{
+	position: absolute;
+	width: 70px;
+	right: 70px;
+	top: 2px;
+	bottom: 2px
+}
+#btn-by-own{
+	position: absolute;
+	width: 60px;
+	right: 150px;
+	top: 2px;
+	bottom: 2px;
+} */
+.text-log{
+	border-top: 10px solid #ccc;
+	border-left: 10px solid #ccc;
+	position: absolute;
+	color: red;
+	right: 0;
+	width: 50px;
+	bottom: 0;
+	height: 30px;
+	resize: none;
+	overflow-y: auto;
+}
+.minisize-log{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 60px;
+	height: 30px;
+	background: #ccc;
+}
+.maxsize-log{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 60px;
+	height: 30px;
+	background: #ccc;
+	display: none;
+}
+#div-maxsize{
+	width: 37px;
+	height: 30px;
+	cursor: pointer;
+	background: url(../img/max.png);
+}
+#div-minisize{
+	width: 37px;
+	height: 30px;
+	cursor: pointer;
+	background: url(../img/mini.png);
+}

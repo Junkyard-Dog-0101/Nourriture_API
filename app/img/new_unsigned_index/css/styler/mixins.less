@@ -1,0 +1,100 @@
+// Alignments
+.align-center {
+	text-align: center;
+}
+.align-left {
+	text-align: left;
+}
+.align-right {
+	text-align: right;
+}
+
+// Background cover
+.background-cover {
+	-webkit-background-size: cover;
+	-moz-background-size:    cover;
+	-o-background-size:      cover;
+	background-size:         cover;
+}
+
+// Border-radius
+.border-radius (@radius) {
+	border-radius:         @radius;
+	-webkit-border-radius: @radius;
+}
+
+.text-shadow (@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+	text-shadow: 		@string;
+}
+
+.box-shadow (@string: 0 0 0 #fff) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
+
+.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:			@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+.inner-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow:    inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:         inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+.box-sizing (@type: border-box) {
+	-webkit-box-sizing: @type;
+	-moz-box-sizing:    @type;
+	box-sizing:         @type;
+}
+
+.gradient(@color, @percent: 10%) {
+	background: lighten(@color, @percent); /* Old browsers */
+	background: -moz-linear-gradient(top,  lighten(@color, @percent) 0%, @color 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten(@color, @percent)), color-stop(100%, @color)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  lighten(@color, @percent) 0%, @color 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  lighten(@color, @percent) 0%, @color 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  lighten(@color, @percent) 0%, @color 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  lighten(@color, @percent) 0%, @color 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='lighten(@color, @percent)', endColorstr='@color',GradientType=0 ); /* IE6-9 */
+}
+
+// Animation
+.transition (@property: all .3s linear) {
+	-webkit-transition: @property;
+	-moz-transition:    @property;
+	-ms-transition:     @property;
+	-o-transition:      @property;
+	transition:         @property;
+}
+
+.valign-center {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.valign-bottom {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.rotate(@degree: -90deg) {
+	/* Safari */
+	-webkit-transform: rotate(@degree);
+
+	/* Firefox */
+	-moz-transform: rotate(@degree);
+
+	/* IE */
+	-ms-transform: rotate(@degree);
+
+	/* Opera */
+	-o-transform: rotate(@degree);
+}

@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var qt = require('quickthumb');
+var path = require('path');
 
 var userController = require('./controllers/user');
 var commentController = require('./controllers/comment');
@@ -36,6 +37,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(passport.initialize());
+
+app.use(express.static(path.join(__dirname, 'app')));
 
 var router = express.Router();
 

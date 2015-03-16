@@ -1,0 +1,83 @@
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="content">
+                        <div class="row">
+                            
+
+                            <div class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                    <!-- <a ng-href="#/p-notification-new" class="btn btn-primary">New Message</a> -->
+                                        <!--<form role="form">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="搜索邮件">
+                                            </div>
+                                        </form>-->
+                                        <hr>
+                                          <ul class="nav nav-pills nav-stacked">
+                                           
+                                            <li class="active"><a href="/#/p-notification-out">All Messages<span class="pull-right badge badge-primary">{{number}}</span></a></li>
+                                             <li><a href="/#/p-notifications">Unread messages </li> 
+                                           
+                                        </ul>
+                                    </div><!-- /.panel-body -->
+                                </div><!-- /.panel -->
+                            </div><!-- /.col-md-3 -->
+                            
+
+                            <div class="col-md-9">
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">All Messages</h3>
+                                        <div class="panel-toolbar">
+                                            <div class="btn-group">
+   
+                                            </div>
+                                            <div class="btn-group">
+                                               <!--  <a href="#" class="btn btn-default"><i class="fa fa-chevron-left"></i></a>
+                                                <a href="#" class="btn btn-default"><i class="fa fa-chevron-right"></i></a> -->
+                                            </div>
+                                        </div>
+                                    </div><!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        
+                                    <ul class="list-unstyled item-listing"  ng-repeat="notification in notificationlist">
+                                                                                            
+                                                                                       <li>
+                                                <div class="media">
+                                                    <div class="pull-left">
+                                                        <a href="profile.html">
+                                                            <img class="media-object" src="img/samples/avatar-1.jpg" width="100">
+                                                        </a>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <div class="btn-group">
+                                                            <a href="#/p-notification-new?id={{notification._id}}" class="btn btn-sm btn-default" data-toggle="tooltip" title="" data-original-title="回复"><i class="fa fa-fw fa-mail-reply-all"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="/#/">{{notification.user}}</a>
+                                                        <p><a href="/#/">{{notification.content}}</a></p>
+                                                        <p class="small text-muted">{{notification.date}}</p>
+                                                    </div>
+                                                </div><!-- /.media -->
+                                            </li>
+                                            
+                                        </ul>
+
+                                    </div><!-- /.panel-body -->
+                                </div><!-- /.panel -->
+                                
+                            </div><!-- /.col-md-9 -->
+                            
+
+                        </div><!-- /.row -->
+                    </div>
+                </div>
+                
+
+                
+            </div><!-- /.row -->
+        </div><!-- /.container -->

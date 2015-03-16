@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- Font Awesome CSS -->
+        <link href="fonts/font-awesome/css/font-awesome.min.css?v=4.0.3" rel="stylesheet">
+                <!-- IcoMoon CSS -->
+        <link href="fonts/icomoon/style.css?v=1.0" rel="stylesheet">
+                <!-- Bootstrap Switch -->
+        <link href="css/libs/bootstrap-switch.min.css?v=3.0.0" rel="stylesheet">
+
+        <!-- Bootstrap Select -->
+        <link href="css/libs/bootstrap-select.min.css" rel="stylesheet">
+                <!-- Summernote -->
+        <link href="css/libs/summernote.css" rel="stylesheet">
+        <link href="css/libs/summernote-bs3.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/styler/style.css" rel="stylesheet" type="text/css">
+        
+                <link href="css/styler/style_new.css" rel="stylesheet" type="text/css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <!-- endbuild -->
+    
+    <style type="text/css">
+    #ng-view{
+		margin-top:30px;    
+    }
+    </style>
+  </head>
+  <body ng-app="webNourritureApp" ng-cloak>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container">
+        <div class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderController">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hidden-sm" href="/#/">Nourriture</a>
+                </div>
+                <div class="navbar-collapse collapse" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/#/">Home</a></li>
+                        <li><a href="/#/p-dishes">MyDishes<span class="pull-right badge badge-danger" ng-bind="notifications"></span></a></li>
+                       <!--  <li><a href="/#/p-friends">Friends<span class="pull-right badge badge-danger">2</span></a></li> -->
+                    </ul>
+                    <ul  ng-show="isLogIn" class="nav navbar-nav navbar-right">
+                        <li>
+                            <a ng-href="#/p-notifications"><i class="imoon imoon-envelope fa-fw"></i><span class="pull-right badge badge-danger" ng-bind="notifications"></span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><span class="text" ng-bind="username"></span> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a ng-href="/#/p-personal-info">Personal Info</a></li>
+                                <li><a ng-href="/#/p-change-pwd">Challenge Password</a></li>
+                                <li><a ng-click="logout()">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+      <div id="ng-view" ng-view=""></div>
+
+      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Bravo Team 10</p>
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/recipe.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/services.js"></script>
+        <script src="scripts/controllers/index.js"></script>
+        <script src="scripts/controllers/dish.js"></script>
+        <script src="scripts/controllers/p-dishes.js"></script>
+        <script src="scripts/controllers/p-personal-info.js"></script>
+        <script src="scripts/controllers/p-change-pwd.js"></script>
+        <script src="scripts/controllers/dishes.js"></script>
+        <script src="scripts/controllers/alldishes.js"></script>
+        <script src="scripts/controllers/p-my-dishes.js"></script>
+        <script src="scripts/controllers/p-notifications.js"></script>
+        <script src="scripts/controllers/p-notification-new.js"></script>
+        <script src="scripts/controllers/p-notification-send.js"></script>
+        <script src="scripts/controllers/p-notification-out.js"></script>
+        <script src="scripts/controllers/p-signin.js"></script>
+        <script src="scripts/controllers/friends.js"></script>
+        <script src="scripts/controllers/p-friends.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/p-add-dishes.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
