@@ -26,6 +26,15 @@ var DishSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    price: {
+        type: Number,
+        default: -1
+    },
+    restaurant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
+        default: null
+    },
     ingredients: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'
@@ -43,3 +52,4 @@ DishSchema.methods.toJSON = function () {
 };
 
 module.exports = mongoose.model('Dish', DishSchema);
+/* l'user est olbigatoire, le restaurant est opitonel, l'user permettra de savoir qui a ajouter le plat pour le restaurant*/

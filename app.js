@@ -15,6 +15,8 @@ var problemController = require('./controllers/problem');
 var authController = require('./controllers/auth');
 var notificationController = require('./controllers/notification');
 var friendController = require('./controllers/friend');
+var restaurantController = require('./controllers/restaurant');
+/* je faisais le controller faut que je test la création de restaurant*/
 
 var adminGroup = function () {
     return function (req, res, next) {
@@ -80,6 +82,10 @@ router.route('/readNotification/')
 
 router.route('/login')
     .post(authController.isAuthenticated, userController.login);
+
+router.route('/restaurants')
+    .post(authController.isAuthenticated, restaurantController.postRestaurants)
+    .get(restaurantController.getRestaurants);
 
 router.route('/users')
     .post(userController.postUsers)

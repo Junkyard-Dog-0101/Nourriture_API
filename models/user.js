@@ -36,6 +36,10 @@ var UserSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    account: {
+        type: Number,
+        default: 0
+    },
     phoneNumber: {
         type: String,
         default: ''
@@ -52,6 +56,10 @@ var UserSchema = new mongoose.Schema({
     registrationDate: {
         type: Date,
         default: Date.now
+    },
+    restaurant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant'
     },
     role: {
         type: String,
