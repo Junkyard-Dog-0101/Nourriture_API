@@ -80,8 +80,17 @@ router.route('/getMyUnreadNotifications/')
 router.route('/readNotification/')
     .put(authController.isAuthenticated, notificationController.readNotification);
 
-router.route('/AddToMyRestaurant/')
-    .put(authController.isAuthenticated, restaurantController.AddToMyRestaurant);
+router.route('/addUserToMyRestaurant/')
+    .put(authController.isAuthenticated, restaurantController.addUserToMyRestaurant);
+
+router.route('/addDishToMyRestaurant/')
+    .put(authController.isAuthenticated, restaurantController.addDishToMyRestaurant);
+
+router.route('/deleteDishToMyRestaurant/')
+    .put(authController.isAuthenticated, restaurantController.deleteDishToMyRestaurant);
+
+router.route('/getRestaurantDishes/:restaurant_id')
+    .get(restaurantController.getRestaurantDishes);
 
 router.route('/login')
     .post(authController.isAuthenticated, userController.login);

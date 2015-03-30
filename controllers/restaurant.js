@@ -1,5 +1,6 @@
 var Restaurant = require('../models/restaurant');
 var User = require('../models/user');
+var Dish = require('../models/dish');
 var Chance = require('chance');
 var fs = require('fs-extra');
 
@@ -56,14 +57,7 @@ exports.getRestaurants = function (req, res) {
     });
 };
 
-exports.AddToMyRestaurant = function (req, res) {
-    /*var restaurant = new Restaurant({
-        user: req.body.restaurantName,
-        introduction: req.body.introduction,
-        phoneNumber: req.body.phoneNumber,
-        email: req.body.email
-    });*/
-
+exports.addUserToMyRestaurant = function (req, res) {
     User.update({_id: req.body.user_id}, {restaurant: req.user.restaurant}, function (err, user) {
         if (err)
             res.status(400).json(err);
@@ -72,15 +66,37 @@ exports.AddToMyRestaurant = function (req, res) {
         else
             res.status(204).json(user);
     });
+};
 
-/*    User.find({_id: req.user._id}, function (err, user) {
+exports.addDishToMyRestaurant = function (req, res) {
+    Dish.update({_id: req.body.dish_id}, {restaurant: req.user.restaurant}, function (err, dish) {
         if (err)
             res.status(400).json(err);
-        else if (!user)
+        else if (!dish)
             res.status(404).end();
         else
-            res.status(200).json(user);
-    });*/
+            res.status(204).json(dish);
+    });
+};
+
+exports.deleteDishToMyRestaurant = function (req, res) {
+    Dish.update({_id: req.body.dish_id}, {restaurant: null}, function (err, dish) {
+        if (err)
+            res.status(400).json(err);
+        else if (!dish)
+            res.status(404).end();
+        else
+            res.status(204).json(dish);
+    });
+};
+
+exports.getRestaurantDishes = function (req, res) {
+    Dish.find({restaurant: req.params.restaurant_id}, function (err, dishes) {
+        if (err)
+            res.status(400).json(err);
+        else
+            res.status(200).json(dishes);
+    });
 };
 
 //add people to my restaurant
