@@ -80,6 +80,9 @@ router.route('/getMyUnreadNotifications/')
 router.route('/readNotification/')
     .put(authController.isAuthenticated, notificationController.readNotification);
 
+router.route('/AddToMyRestaurant/')
+    .put(authController.isAuthenticated, restaurantController.AddToMyRestaurant);
+
 router.route('/login')
     .post(authController.isAuthenticated, userController.login);
 

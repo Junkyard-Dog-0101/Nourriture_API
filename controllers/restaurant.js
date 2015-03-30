@@ -56,6 +56,33 @@ exports.getRestaurants = function (req, res) {
     });
 };
 
+exports.AddToMyRestaurant = function (req, res) {
+    /*var restaurant = new Restaurant({
+        user: req.body.restaurantName,
+        introduction: req.body.introduction,
+        phoneNumber: req.body.phoneNumber,
+        email: req.body.email
+    });*/
+
+    User.update({_id: req.body.user_id}, {restaurant: req.user.restaurant}, function (err, user) {
+        if (err)
+            res.status(400).json(err);
+        else if (!user)
+            res.status(404).end();
+        else
+            res.status(204).json(user);
+    });
+
+/*    User.find({_id: req.user._id}, function (err, user) {
+        if (err)
+            res.status(400).json(err);
+        else if (!user)
+            res.status(404).end();
+        else
+            res.status(200).json(user);
+    });*/
+};
+
 //add people to my restaurant
 //add dish to the restaurant
 //paid a food from a costumer of my restaurant
