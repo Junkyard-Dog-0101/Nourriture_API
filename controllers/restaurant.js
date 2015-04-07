@@ -1,3 +1,4 @@
+var Bill = require('../models/bill');
 var Restaurant = require('../models/restaurant');
 var User = require('../models/user');
 var Dish = require('../models/dish');
@@ -21,16 +22,15 @@ exports.postRestaurants = function (req, res) {
                 res.status(400).json(err);
             else {
                 restaurantSave(restaurant, req, res);
-                }
-            });
-        }
+            }
+        });
+    }
     else {
         restaurantSave(restaurant, req, res)
     }
 };
 
-function restaurantSave(restaurant, req, res)
-{
+function restaurantSave(restaurant, req, res) {
     restaurant.save(function (err) {
         if (err)
             res.status(400).json(err);
@@ -96,6 +96,33 @@ exports.getRestaurantDishes = function (req, res) {
             res.status(400).json(err);
         else
             res.status(200).json(dishes);
+    });
+};
+
+exports.payDish = function (req, res) {
+    Restaurant.find({_id: req.params.restaurant_id}, function (err, dishes) {
+        if (err)
+            res.status(400).json(err);
+        else {
+            Dish.find({_id: req.params.dish_id}, function (err, dishes) {
+                if (err)
+                    res.status(400).json(err);
+                else {
+                    var bill = new Bill({
+                        to: req.body.restaurant_id,
+                        dish: req.body.dish_id,
+                        from: req.user._id
+                    });
+                    bill.save(function (err) {
+                        if (err)
+                            res.status(400).json(err);
+                        else
+                            res.status(201).json(bill);
+                    });
+                }
+
+            });
+        }
     });
 };
 

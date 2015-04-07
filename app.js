@@ -92,6 +92,9 @@ router.route('/deleteDishToMyRestaurant/')
 router.route('/getRestaurantDishes/:restaurant_id')
     .get(restaurantController.getRestaurantDishes);
 
+router.route('/payDish/')
+    .post(authController.isAuthenticated, restaurantController.payDish);
+
 router.route('/login')
     .post(authController.isAuthenticated, userController.login);
 
