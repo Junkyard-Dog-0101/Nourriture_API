@@ -16,6 +16,7 @@ var authController = require('./controllers/auth');
 var notificationController = require('./controllers/notification');
 var friendController = require('./controllers/friend');
 var restaurantController = require('./controllers/restaurant');
+var billController = require('./controllers/bill');
 /* je faisais le controller faut que je test la création de restaurant*/
 
 var adminGroup = function () {
@@ -92,38 +93,45 @@ router.route('/deleteDishToMyRestaurant/')
 router.route('/getRestaurantDishes/:restaurant_id')
     .get(restaurantController.getRestaurantDishes);
 
+router.route('/getMyBill')
+    .get(authController.isAuthenticated, billController.getMyBill);
+
 router.route('/payDish/')
     .post(authController.isAuthenticated, restaurantController.payDish);
 
 router.route('/login')
     .post(authController.isAuthenticated, userController.login);
 
+// restaurants
+
 router.route('/restaurants')
     .post(authController.isAuthenticated, restaurantController.postRestaurants)
     .get(restaurantController.getRestaurants);
+router.route('/restaurants/:restaurant_id')
+    .get(restaurantController.getRestaurant);
+
 
 router.route('/users')
     .post(userController.postUsers)
     .get(userController.getUsers);
-
 router.route('/users/:user_id')
     .get(userController.getUser)
     .put(authController.isAuthenticated, userController.putUser)
     .delete(authController.isAuthenticated, adminGroup(), userController.deleteUser);
 
+
 router.route('/notifications/:notification_id')
     .put(authController.isAuthenticated, notificationController.putNotification);
 //.delete(authController.isAuthenticated, adminGroup(), notificationController.deleteNotification);
 //.get(notificationController.getNotification)
-
 router.route('/notifications')
     .get(notificationController.getNotifications);
 // .post(authController.isAuthenticated, notificationController.postComments)
 
+
 router.route('/likes/:like_id')
     .get(likeController.getLike)
     .delete(authController.isAuthenticated, likeController.deleteLike);
-
 router.route('/likes')
     .post(authController.isAuthenticated, likeController.postLikes)
     .get(likeController.getLikes);
@@ -133,37 +141,37 @@ router.route('/comments/:comment_id')
     .get(commentController.getComment)
     .put(authController.isAuthenticated, commentController.putComment)
     .delete(authController.isAuthenticated, commentController.deleteComment);
-
 router.route('/comments')
     .post(authController.isAuthenticated, commentController.postComments)
     .get(commentController.getComments);
+
 
 router.route('/ingredients/:ingredient_id')
     .get(ingredientController.getIngredient)
     .put(authController.isAuthenticated, adminGroup(), ingredientController.putIngredient)
     .delete(authController.isAuthenticated, adminGroup(), ingredientController.deleteIngredient);
-
 router.route('/ingredients')
     .post(authController.isAuthenticated, ingredientController.postIngredients)
     .get(ingredientController.getIngredients);
+
 
 router.route('/dishes/:dish_id')
     .get(dishController.getDish)
     .put(authController.isAuthenticated, dishController.putDish)
     .delete(authController.isAuthenticated, dishController.deleteDish);
-
 router.route('/dishes')
     .post(authController.isAuthenticated, dishController.postDishes)
     .get(dishController.getDishes);
+
 
 router.route('/problems/:problem_id')
     .get(problemController.getProblem)
     .put(authController.isAuthenticated, adminGroup(), problemController.putProblem)
     .delete(authController.isAuthenticated, adminGroup(), problemController.deleteProblem);
-
 router.route('/problems')
     .post(authController.isAuthenticated, problemController.postProblems)
     .get(problemController.getProblems);
+
 
 app.use('/api', router);
 

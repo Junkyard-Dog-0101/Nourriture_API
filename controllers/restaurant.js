@@ -99,6 +99,17 @@ exports.getRestaurantDishes = function (req, res) {
     });
 };
 
+exports.getRestaurant = function (req, res) {
+    Restaurant.find({_id: req.params.restaurant_id}, function (err, user) {
+        if (err)
+            res.status(400).json(err);
+        else if (!user[0])
+            res.status(404).end();
+        else
+            res.status(200).json(user);
+    });
+};
+
 exports.payDish = function (req, res) {
     Restaurant.find({_id: req.params.restaurant_id}, function (err, dishes) {
         if (err)
