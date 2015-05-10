@@ -1,4 +1,4 @@
 /node_modules
-/app/uploads
+/app/uploads/*
 /app/bower_components
 /uploads/*
