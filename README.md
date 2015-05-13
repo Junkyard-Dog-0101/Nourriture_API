@@ -1,4 +1,4 @@
-api-nourriture
+Nourriture
 ==============
 How to run this project
 ---------
