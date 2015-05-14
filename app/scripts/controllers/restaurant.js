@@ -60,13 +60,13 @@ angular.module('webNourritureApp')
     }).error();
   };
   
-//  $scope.showAdd()=function () {
-//    $http.get('api/getMyDishes/').success(
-//        function  (data) {
-//          $scope.dishes=data;
-//        }
-//      ).error(function  () {
-//          $scope.message="failed";
-//      });
-//  };
+  $scope.showAdd=function () {
+    $http.get('api/getMyDishes/').success(
+        function  (data) {
+          $scope.dishes=data;
+        }
+      ).error(function  () {
+          $scope.message="failed";
+      });
+  };
 });
