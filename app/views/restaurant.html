@@ -1,0 +1,174 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-no-left-padding">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal ng-pristine ng-valid" ng-submit="addRestaurant()" id="defaultForm">
+                        <div class="form-group">
+                            <label for="subject" class="col-sm-2 control-label">Picture</label>
+                            <div class="dropzone alert alert-info col-md-2" file-dropzone="[image/png]" file="image" file-name="imageFileName"
+                            data-max-file-size="3">
+                                <span class="drop-here">Picture of Restaurant</span>
+                            </div>
+                            <div class="image-container">
+                                <img style="display: none;width: 150px;height: 150px" ng-src={{image}} class="img-thumbnail img-upload" />
+                                <span style="display: none;" class="file-name">{{imageFileName}}</span>
+                                <span style="display: none;">{{image}}</span>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="subject" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="subject" ng-model="restaurantName" placeholder="restaurantName">
+                                <span class="help-block" id="hint1"></span>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="message" class="col-sm-2 control-label">introduction</label>
+                            <div class="col-sm-10">
+                                <textarea name="description" class="form-control" rows="" id="message" ng-model="introduction" placeholder="introduction"></textarea>
+                                <span class="help-block" id="hint2"></span>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="message" class="col-sm-2 control-label">phoneNumber</label>
+                            <div class="col-sm-10">
+                                <textarea name="description" class="form-control" rows="" id="message" ng-model="phoneNumber" placeholder="phoneNumber"></textarea>
+                                <span class="help-block" id="hint2"></span>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label for="message" class="col-sm-2 control-label">email</label>
+                            <div class="col-sm-10">
+                                <textarea name="description" class="form-control" rows="" id="message" ng-model="email" placeholder="email"></textarea>
+                                <span class="help-block" id="hint2"></span>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary" id="submit">Add</button>
+                            </div>
+                        </div>
+                        <!-- /.form-group -->
+                    </form>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <br/>
+        <div class="col-md-12 row">
+            <div class="col-xs-6 col-md-3" ng-repeat='restaurant in restaurants'>
+                <div class="thumbnail">
+                    <img style="width: 150px;height: 150px" ng-src="{{restaurant.picture}}" alt="Sample thumbnail 1">
+                    <div class="caption">
+                        <h3>{{restaurant.restaurantName}}</h3>
+                        <p>{{restaurant.introduction}}</p>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="javascript:;" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" data-target=".bs-example-modal-lg" ng-href="javascript:;" ng-click="detail(restaurant._id)" class="small">Detail</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" data-target=".bs-add-modal-lg" ng-href="javascript:;" ng-click="showAdd()" class="small">add Dish</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+<!-- 详情的弹出框-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">{{detailInfo.restaurantName}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="media">
+                    <p class="well">{{detailInfo.introduction}}</p>
+                    <p class="well">{{detailInfo.phoneNumber}}</p>
+                    <p class="well">{{detailInfo.email}}</p>
+                    <p class="well">
+                        <img style="width:500px" ng-src="{{detailInfo.picture}}">
+                    </p>
+                    <!-- <form class="form-horizontal" role="form" ng-submit="comment()">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Comment</label>
+                            <div class="col-sm-10">
+                                <textarea required class="form-control" rows="3" ng-model="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>-->
+                    <!-- <div class="media-body1" ng-repeat="comment in commentList">
+                        <a class="pull-left" href="profile.html">
+                                                            <img class="media-object" src="img/samples/avatar-3.jpg" alt="Sarah Cole">
+                                                        </a>
+                        <h4 class="media-heading">
+                            <a href="profile.html">{{users.name[$index]}}</a>
+                        </h4>
+                        <p>{{comment.content}}</p>
+                        <ul class="list-inline">
+                            <li>
+                                <span class="muted small">about an hour ago</span>
+                            </li>
+                        </ul>
+                    </div>--></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-add-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">{{detailInfo.restaurantName}}</h4>
+            </div>
+            <div class="modal-body">
+<!--                <div class="col-xs-6 col-md-3" ng-repeat='dish in dishes'>
+                    <div class="thumbnail">
+                        <img style="width: 150px;height: 150px" ng-src="{{dish.picture}}" alt="Sample thumbnail 1">
+                        <div class="caption">
+                            <h3>{{dish.name}}</h3>
+                            <p>{{dish.description}}</p>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="javascript:;" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target=".bs-example-modal-lg" ng-href="javascript:;" ng-click="detail(dish._id)" class="small">Comment</a>
+                                </li>
+                                <li>
+                                    <span class="muted small">about an hour ago</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

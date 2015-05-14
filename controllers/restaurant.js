@@ -69,7 +69,7 @@ exports.addUserToMyRestaurant = function (req, res) {
 };
 
 exports.addDishToMyRestaurant = function (req, res) {
-    Dish.update({_id: req.body.dish_id}, {restaurant: req.user.restaurant}, function (err, dish) {
+    Dish.update({_id: req.body.dish_id}, {restaurant: req.user.restaurant,price:req.body.price}, function (err, dish) {
         if (err)
             res.status(400).json(err);
         else if (!dish)

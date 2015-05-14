@@ -113,6 +113,10 @@ angular
         templateUrl: 'views/p-add-dishes.html',
         controller: 'PAddDishesCtrl'
       })
+      .when('/restaurant', {
+        templateUrl: 'views/restaurant.html',
+        controller: 'RestaurantCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

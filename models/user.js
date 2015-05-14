@@ -93,7 +93,7 @@ UserSchema.methods.toJSON = function () {
     delete obj.password;
     delete obj.admin;
     delete obj.__v;
-    return obj
+    return obj;
 };
 
 UserSchema.methods.verifyPassword = function (password, cb) {
