@@ -63,7 +63,7 @@ angular.module('webNourritureApp')
   $scope.showAdd=function () {
     $http.get('api/getMyDishes/').success(
         function  (data) {
-          $scope.message="success";
+          $scope.dishes=data;
         }
       ).error(function  () {
           $scope.message="failed";
