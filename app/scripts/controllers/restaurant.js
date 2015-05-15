@@ -63,10 +63,32 @@ angular.module('webNourritureApp')
   $scope.showAdd=function () {
     $http.get('api/getMyDishes/').success(
         function  (data) {
-          $scope.dishes=data;
+          $scope.message="success";
         }
       ).error(function  () {
           $scope.message="failed";
       });
+  };
+  
+  $scope.add=function (myDishid) {
+    $http(
+      {
+        method:'PUT',
+        url:'api/addDishToMyRestaurant',
+        data:"dish_id="+myDishid+
+        "&price="+$scope.myDishPrice,
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      }
+    ).success(
+      function (data){
+          $scope.message=data;
+        }
+    ).error(
+      function () {
+          $scope.message="failed";
+      }
+    );
   };
 });

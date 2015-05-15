@@ -154,11 +154,17 @@
                         <div class="caption">
                             <h3>{{dish.name}}</h3>
                             <p>{{dish.description}}</p>
-                            <ul class="list-inline">
-                                <li>
-                                    <a data-toggle="modal" data-target=".bs-example-modal-lg" ng-href="javascript:;" ng-click="detail(dish._id)" class="small">add to restaurant</a>
-                                </li>
-                            </ul>
+                            <form class="form-inline" ng-submit="add(dish._id)" id="mAddForm">
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Set Price of the Dish</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control bfh-number" id="exampleInputAmount" name="myDishPrice" ng-model="$parent.myDishPrice" placeholder="Price of dish">
+                                        <div class="input-group-addon">yuan</div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add to the restaurant</button>
+                            </form>
+                            <p>{{message}}</p>
                         </div>
                     </div>
                 </div>
