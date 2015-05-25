@@ -6,6 +6,7 @@
         <div class="caption">
           <h3>{{dish.name}}</h3>
           <p>{{dish.description}}</p>
+          <p>price:{{dish.price}}$</p>
           <ul class="list-inline">
             <li>
               <a href="javascript:;" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a>
@@ -14,7 +15,7 @@
               <a data-toggle="modal" data-target=".bs-example-modal-lg" href="javascript:;" ng-click="detail(dish._id)" class="small">Comment</a>
             </li>
             <li>
-              <span class="muted small">about an hour ago</span>
+              <button type="submit" class="btn btn-primary">buy</button>
             </li>
           </ul>
         </div>
@@ -23,8 +24,8 @@
   </div>
   <!-- /.row -->
 </div>
-<!-- /.container -->
-<!-- 详情的弹出框-->
+
+<!-- buy and comment-->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -38,6 +39,9 @@
       <div class="modal-body">
         <div class="media">
           <p class="well">{{detailInfo.description}}</p>
+          <p class="well">price:{{detailInfo.price}}$
+            <button type="submit" class="btn btn-primary" style="float:right;">buy</button>
+          </p>                
           <p class="well">
             <img style="width:500px" ng-src="{{detailInfo.picture}}">
           </p>
@@ -52,6 +56,7 @@
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
+              
             </div>
           </form>
           <div class="media-body1" ng-repeat="comment in commentList">

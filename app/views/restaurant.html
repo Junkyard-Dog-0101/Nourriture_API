@@ -64,7 +64,9 @@
         <div class="col-md-12 row">
             <div class="col-xs-6 col-md-3" ng-repeat='restaurant in restaurants'>
                 <div class="thumbnail">
+                    <a ng-href="/#/restaurant/{{restaurant._id}}">
                     <img style="width: 150px;height: 150px" ng-src="{{restaurant.picture}}" alt="Sample thumbnail 1">
+                    </a>
                     <div class="caption">
                         <h3>{{restaurant.restaurantName}}</h3>
                         <p>{{restaurant.introduction}}</p>

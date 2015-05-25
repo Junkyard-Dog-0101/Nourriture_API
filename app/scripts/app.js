@@ -117,6 +117,10 @@ angular
         templateUrl: 'views/restaurant.html',
         controller: 'RestaurantCtrl'
       })
+      .when('/restaurant/:id', {
+        templateUrl: 'views/restaurantdetail.html',
+        controller: 'RestaurantdetailCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
