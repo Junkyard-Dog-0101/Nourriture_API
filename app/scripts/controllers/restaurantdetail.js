@@ -8,7 +8,7 @@
  * Controller of the webNourritureApp
  */
 angular.module('webNourritureApp')
-  .controller('RestaurantdetailCtrl', function ($scope,$http,$routeParams) {
+  .controller('RestaurantdetailCtrl', function ($scope,$http,$routeParams,$location) {
     $http.get('api/getRestaurantDishes/'+$routeParams.id).success(function (data) {
       $scope.dishes = data;
     });
@@ -51,7 +51,17 @@ angular.module('webNourritureApp')
           }).error();
         };
         
-        $scope.buy=function () {
-          
-        }
+        $scope.buy=function (dish_id) {
+          $http({
+            method:'POST',
+            url:'/api/payDish/',
+            data:"restaurant_id="+$routeParams.id+
+            "&dish_id="+dish_id,
+            headers:{
+                    'Content-Type': 'application/x-www-form-urlencoded',
+            }
+          }).success(function (data) {
+            $location.path('/bill');
+          }).error();
+        };
 });

@@ -121,6 +121,10 @@ angular
         templateUrl: 'views/restaurantdetail.html',
         controller: 'RestaurantdetailCtrl'
       })
+      .when('/bill', {
+        templateUrl: 'views/bill.html',
+        controller: 'BillCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

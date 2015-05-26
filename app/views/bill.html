@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-md-3" ng-repeat='bill in bills'>
+      <div class="thumbnail">
+<!--        <img style="width: 150px;height: 150px" ng-src="{{dish.picture}}" alt="Sample thumbnail 1">-->
+        <div class="caption">
+          <p>{{$parent.restaurants.restaurantName}}</p>
+          <p>{{$parent.dishes.name}}</p>
+          <p>{{$parent.dishes.price}}</p>       
+<!--          <ul class="list-inline">
+            <li>
+              <a href="javascript:;" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a>
+            </li>
+            <li>
+              <a data-toggle="modal" data-target=".bs-example-modal-lg" href="javascript:;" ng-click="detail(dish._id)" class="small">Comment</a>
+            </li>
+            <li>
+              <button type="submit" class="btn btn-primary">buy</button>
+            </li>
+          </ul>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
