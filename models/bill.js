@@ -11,10 +11,26 @@ var BillSchema = new mongoose.Schema({
         ref: 'Restaurant',
         required: true
     },
+    restaurantName:{
+        type:String,
+        required: true
+    },
     dish: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Dish',
         required: true
+    },
+    name:{
+        type:String,
+        required: true
+    },
+    price:{
+        type:Number,
+        required: true
+    },
+    date:{
+        type: Date,
+        default: Date.now
     }
 });
 

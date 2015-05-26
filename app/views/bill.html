@@ -4,23 +4,86 @@
       <div class="thumbnail">
 <!--        <img style="width: 150px;height: 150px" ng-src="{{dish.picture}}" alt="Sample thumbnail 1">-->
         <div class="caption">
-          <p>{{$parent.restaurants.restaurantName}}</p>
-          <p>{{$parent.dishes.name}}</p>
-          <p>{{$parent.dishes.price}}</p>       
-<!--          <ul class="list-inline">
+          <p><a data-toggle="modal" data-target=".bs-example-modal-lg" href="javascript:;" ng-click="detail(bill.dish)">dishname:{{bill.name}}</a></p>
+          <p><a ng-href="/#/restaurant/{{bill.to}}">restaurant:{{bill.restaurantName}}</a></p>
+          <p>price:{{bill.price}}$</p>
+         <ul class="list-inline">
             <li>
               <a href="javascript:;" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a>
             </li>
             <li>
-              <a data-toggle="modal" data-target=".bs-example-modal-lg" href="javascript:;" ng-click="detail(dish._id)" class="small">Comment</a>
+              <a data-toggle="modal" data-target=".bs-example-modal-lg" href="javascript:;" ng-click="detail(bill.dish)" class="small">Comment</a>
             </li>
+            <li><span class="muted small">paid time:{{bill.date|date:'yyyy-MM-dd HH:mm:ss'}}</span></li>
             <li>
-              <button type="submit" class="btn btn-primary">buy</button>
+              <button type="submit" class="btn btn-danger" ng-click="delete(bill._id)">delete</button>
             </li>
-          </ul>-->
+          </ul>
         </div>
       </div>
     </div>
   </div>
   <!-- /.row -->
+</div>
+
+
+<!-- buy and comment-->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">{{detailInfo.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="media">
+          <p class="well">{{detailInfo.description}}</p>
+          <p class="well">price:{{detailInfo.price}}$</p>                
+          <p class="well">
+            <img style="width:500px" ng-src="{{detailInfo.picture}}">
+          </p>
+          <form class="form-horizontal" role="form" ng-submit="comment()">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Comment</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" rows="3" ng-model="content"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+              
+            </div>
+          </form>
+          <div class="media-body1" ng-repeat="comment in commentList">
+            <a class="pull-left" href="profile.html">
+                                                            <img class="media-object" src="img/samples/avatar-3.jpg" alt="Sarah Cole">
+                                                        </a>
+            <h4 class="media-heading">
+              <a href="profile.html"></a>
+            </h4>
+            <p>{{comment.content}}</p>
+            <ul class="list-inline">
+              <li>
+                <a href="javascript:;" class="small"><i class="fa fa-thumbs-o-up"></i> Like</a>
+              </li>
+              <li>
+                <a href="javascript:;" class="small">Comment</a>
+              </li>
+              <li>
+                <a href="javascript:;" class="small">Share</a>
+              </li>
+              <li>
+                <span class="muted small">about an hour ago</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -12,6 +12,9 @@ angular.module('webNourritureApp')
     $http.get('api/getRestaurantDishes/'+$routeParams.id).success(function (data) {
       $scope.dishes = data;
     });
+    $http.get('api/restaurants/'+$routeParams.id).success(function (data) {
+      $scope.restaurant=data[0];
+    }).error();
     
     $scope.detail=function  ($id) {
           $http.get('api/dishes/'+$id).success(function  (data) {
@@ -51,12 +54,15 @@ angular.module('webNourritureApp')
           }).error();
         };
         
-        $scope.buy=function (dish_id) {
+        $scope.buy=function (dish_id,dish_name,dish_price) {
           $http({
             method:'POST',
             url:'/api/payDish/',
             data:"restaurant_id="+$routeParams.id+
-            "&dish_id="+dish_id,
+            "&dish_id="+dish_id+
+            "&dish_name="+dish_name+
+            "&restaurant_name="+$scope.restaurant.restaurantName+
+            "&dish_price="+dish_price,
             headers:{
                     'Content-Type': 'application/x-www-form-urlencoded',
             }

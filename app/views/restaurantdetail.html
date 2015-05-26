@@ -15,7 +15,7 @@
               <a data-toggle="modal" data-target=".bs-example-modal-lg" href="javascript:;" ng-click="detail(dish._id)" class="small">Comment</a>
             </li>
             <li>
-              <button type="submit" class="btn btn-primary" ng-click="buy(dish._id)">buy</button>
+              <button type="submit" class="btn btn-primary" ng-click="buy(dish._id,dish.name,dish.price)">buy</button>
             </li>
           </ul>
         </div>
@@ -40,7 +40,7 @@
         <div class="media">
           <p class="well">{{detailInfo.description}}</p>
           <p class="well">price:{{detailInfo.price}}$
-            <button type="submit" class="btn btn-primary" style="float:right;">buy</button>
+            <button type="submit" class="btn btn-primary" style="float:right;" ng-click="buy(detailInfo._id,detailInfo.name,detailInfo.price)">buy</button>
           </p>                
           <p class="well">
             <img style="width:500px" ng-src="{{detailInfo.picture}}">

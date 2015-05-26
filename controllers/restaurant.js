@@ -122,7 +122,10 @@ exports.payDish = function (req, res) {
                     var bill = new Bill({
                         to: req.body.restaurant_id,
                         dish: req.body.dish_id,
-                        from: req.user._id
+                        name:req.body.dish_name,
+                        from: req.user._id,
+                        restaurantName:req.body.restaurant_name,
+                        price:req.body.dish_price
                     });
                     bill.save(function (err) {
                         if (err)
