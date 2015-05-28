@@ -10,7 +10,7 @@ exports.getMyBill = function (req, res) {
 };
 
 exports.deleteMyBill=function (req,res) {
-    Bill.remove({_id: req.params.bill_id, user: req.user._id}, function (err) {
+    Bill.remove({_id: req.params.bill_id, from: req.user._id}, function (err) {
         if (err)
             res.status(400).json(err);
         else
